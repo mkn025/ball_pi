@@ -51,9 +51,12 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 
     # Fysikk variabler liten ball 
+
 dx_stor_ball = 1 # farten stor ball
-masse_stor_ball = 100000
-dx_liten_ball = 1   # farten liten ball
+masse_stor_ball = 1
+
+
+dx_liten_ball = 0   # farten liten ball
 masse_liten_ball= 1
 
 
@@ -73,27 +76,29 @@ while True:
 
     # støt med annen ball 
     if stor_ball_pos_x - radius_stor_ball < liten_ball_pos_x + radius_liten_ball:
-        dx_stor_ball = -dx_stor_ball
-        dx_liten_ball = -dx_liten_ball
         kolisjon = True
     else:
         kolisjon = False
    
 
-   # støt med vegg
-    if stor_ball_pos_x > x_vin - radius_stor_ball:
-        dx_stor_ball = -dx_stor_ball
-    elif liten_ball_pos_x < 0 + radius_liten_ball:
-        dx_liten_ball = -dx_liten_ball
+  
     
 
     if kolisjon == True:
-        print("True")
-    
+        other = "liten"
+        this = "stor"
+        sum_av_M = masse_stor_ball + masse_liten_ball
+        dx_liten_ball = ((masse_stor_ball-masse_liten_ball)/sum_av_M * dx_stor_ball) + (2*masse_liten_ball/sum_av_M) * dx_liten_ball
 
 
 
-    #rendrer ballene 
+ # støt med vegg
+    if stor_ball_pos_x > x_vin - radius_stor_ball:
+        dx_stor_ball = -dx_stor_ball
+
+    elif liten_ball_pos_x < 0 + radius_liten_ball:
+        dx_liten_ball = -dx_liten_ball
+    # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
     
