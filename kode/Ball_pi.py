@@ -5,7 +5,7 @@ pygame.font.init()
 
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
-fps = 120
+fps = 1200
 
 # Farger
 Bakgrunn = (30,30,30)
@@ -48,12 +48,12 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
     # Fysikk variabler liten ball 
 
-dx_stor_ball = 1 # farten stor ball
-masse_stor_ball = 1
+v2_start = 2 # farten stor ball
+m2 = 1
 
 
-dx_liten_ball = 0   # farten liten ball
-masse_liten_ball= 1
+v1_start = 0   # farten liten ball
+m1 = 1
 
 
 # tekst
@@ -68,6 +68,8 @@ def tekst(x,y,varibler, tektst):
 Antall_kolisjoner = 0  
  
 
+
+
 # kolidering
 kolisjon = False
 kolisjon_med_vegg = False
@@ -79,46 +81,43 @@ while True:
     bakke(blue)
 
     # Grunnbevegelse 
-    stor_ball_pos_x -= dx_stor_ball
-    liten_ball_pos_x += dx_liten_ball
+    stor_ball_pos_x -= v2_start
+    liten_ball_pos_x += v1_start
 
-
+    stor_ball_pos_x - radius_stor_ball > liten_ball_pos_x + radius_liten_ball
     # støt med annen ball 
     if stor_ball_pos_x - radius_stor_ball < liten_ball_pos_x + radius_liten_ball:
         kolisjon = True
+        Antall_kolisjoner += 1
 
+    
     else:
         kolisjon = False
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     
-    print(dx_stor_ball,dx_liten_ball)
+    print(v2_start,v1_start)
     if kolisjon == True:
         # endring av fart og retning
 
-        Antall_kolisjoner += 1
+       # Antall_kolisjoner += 1
 
-            
+        
         
         # utregninger for elastisk kolisjon
        
-        stor_b = "m1"
-        liten_b = "m2"
-        dx_liten_ball = "u1"
-        dx_stor_ball = "u2"
+       
 
-        sum_av_M = masse_stor_ball + masse_liten_ball
-        dx_liten_ball = (((masse_stor_ball-masse_liten_ball)/(sum_av_M)) * dx_liten_ball) + ((2*masse_liten_ball/sum_av_M) * dx_stor_ball)
-        dx_liten_ball = (((masse_stor_ball-masse_liten_ball)/(sum_av_M))* dx_stor_ball) + ((2*masse_stor_ball/sum_av_M)*dx_liten_ball)
-        
-        
-        #dx_liten_ball = -dx_liten_ball
 
+        sum_av_M = m2 + m1
+        
+        v2 = (((m2 - m1)/(sum_av_M))*v2_start) + (((2*m1)/(sum_av_M))* v1_start)
+        v1 = (((m1 - m2)/(sum_av_M))*v1_start) + (((2*m2)/(sum_av_M))*v2_start)
+
+        v1_start = -v1
+        v2_start = v2
         # Endring av fart uten fysikk
-        #dx_liten_ball = -dx_liten_ball
-        #dx_stor_ball = -dx_stor_ball
-
 
     elif kolisjon_med_vegg == True:
         Antall_kolisjoner += 1 
@@ -127,11 +126,11 @@ while True:
 
  # støt med vegg
     if stor_ball_pos_x > x_vin - radius_stor_ball:
-        dx_stor_ball = -dx_stor_ball
+        v2_start = v2_start
         
 
     elif liten_ball_pos_x < 0 + radius_liten_ball:
-        dx_liten_ball = -dx_liten_ball
+        v1_start = -v1_start
         kolisjon_med_vegg = True
     
 
