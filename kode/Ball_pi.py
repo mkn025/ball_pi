@@ -86,7 +86,7 @@ while True:
 
     stor_ball_pos_x - radius_stor_ball > liten_ball_pos_x + radius_liten_ball
     # støt med annen ball 
-    if stor_ball_pos_x - radius_stor_ball < liten_ball_pos_x + radius_liten_ball:
+    if stor_ball_pos_x - radius_stor_ball == liten_ball_pos_x + radius_liten_ball:
         kolisjon = True
         Antall_kolisjoner += 1
 
