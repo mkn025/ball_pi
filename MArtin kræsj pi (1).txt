@@ -31,9 +31,7 @@ def liten_ball(x_kod, y_kod, radius):
 
 
 noe = float(input("noe: "))
-
 noe2 = noe*2
-
 # bevegelses varibler
 
     # stor ball
