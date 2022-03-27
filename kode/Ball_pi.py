@@ -1,6 +1,7 @@
 # Ball_pi med rami sine forberinger
 
 import pygame
+from math import pi as π
 pygame.init()
 pygame.font.init()
 
@@ -31,18 +32,23 @@ def liten_ball(x_kod, y_kod, radius):
     pygame.draw.circle(vindu, ball_farge, (x_kod,y_kod), radius, width=0)
 
 
-hundre_potens = float(input("noe: "))
-noe2 = hundre_potens*2
+
+# desimaler av pi 
+antall_siffer = float(input("Hvor mange siffer av π? : "))
+hundre_potens = antall_siffer-2
+potens_radius = hundre_potens*2
+
+
 # bevegelses varibler
 
     # stor ball
-radius_stor_ball = 50 * (noe2)
+radius_stor_ball = 50 * (potens_radius)
 stor_ball_pos_x = 700
 stor_ball_pos_y = 500 - radius_stor_ball
 
 
     # liten ball 
-radius_liten_ball = 25 * (noe2)
+radius_liten_ball = 25 * (potens_radius)
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
@@ -52,7 +58,7 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 
 v2_start = -2 # farten stor ball
-m2 = 100 * (10**(noe2))
+m2 = 100 * (10**(potens_radius))
 
 v1_start = 0   # farten liten ball
 m1 = 1
@@ -82,7 +88,7 @@ while True:
     bakke(blue)
 
     # Grunnbevegelse 
-    stor_ball_pos_x += v2_start #endret fra - til +
+    stor_ball_pos_x += v2_start  # endret fra - til +
     liten_ball_pos_x += v1_start
 
     # støt med annen ball 
@@ -93,16 +99,17 @@ while True:
         kolisjon = False
 
     # tekst som vises i bilde
-    tekst(1000,100,Antall_kolisjoner, "Antall treff")
+   
     print(v2_start,v1_start)
+
+
     if kolisjon == True:
         # endring av fart og retning
         
         
         # utregninger for elastisk kolisjon
 
-        sum_av_M = m2 + m1
-        
+        sum_av_M = m2 + m1        
         v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
         v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
 
@@ -115,16 +122,27 @@ while True:
         Antall_kolisjoner += 1 
         kolisjon_med_vegg = False
 
- # støt med veg
+
+
+    # støt med veg
     if liten_ball_pos_x < 0 + radius_liten_ball:
         v1_start = -v1_start
         kolisjon_med_vegg = True
     
+
+    # stopping av simulasjonen 
+    if stor_ball_pos_x > 2000:
+        pygame.quit()
+
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
 
+
+
     # tekst som vises i bilde
-    tekst(1000,100,Antall_kolisjoner, "Antall treff")    
+    tekst(1000,100,Antall_kolisjoner, "Antall treff")
+    tekst(1000,150,round(π,5),"")
+
 
     pygame.display.update()
