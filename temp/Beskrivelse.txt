@@ -1,0 +1,9 @@
+
+
+/Users/martineldeknutsen/Documents/GitHub/ball_pi/kode/Ball_pi.py ===> er en fysikk simusjon
+som bruker kolisjonen av blokker til å rengne ut pi.
+
+
+
+
+
