@@ -33,6 +33,7 @@ def liten_ball(x_kod, y_kod, radius):
     pygame.draw.circle(vindu, ball_farge, (x_kod,y_kod), radius, width=0)
 
 
+    
 
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
@@ -55,8 +56,9 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 
 
-    # Fysikk variabler liten ball 
 
+
+# Fysikk variabler baller  
 
 v2_start = -2 # farten stor ball
 m2 = 100 * (10**(potens_radius))
@@ -71,6 +73,9 @@ font = pygame.font.SysFont('arial', 32)
 def tekst(x,y,varibler, tektst):
     tekts_som_vises = font.render(f"{varibler} {tektst} ",True,(255,255,255))
     vindu.blit(tekts_som_vises,(x, y))
+
+
+
 
 
 
@@ -107,9 +112,8 @@ while True:
     if kolisjon == True:
         # endring av fart og retning
         
-        
+    
         # utregninger for elastisk kolisjon
-
         sum_av_M = m2 + m1        
         v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
         v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
@@ -129,6 +133,8 @@ while True:
     if liten_ball_pos_x < 0 + radius_liten_ball:
         v1_start = -v1_start
         kolisjon_med_vegg = True
+
+
     
 
     # stopping av simulasjonen 
