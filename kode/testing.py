@@ -1,4 +1,2 @@
-import math
 
-
-print(math.pi)
+# om vi trenger å teste noe før de går i hoved porgrammet
