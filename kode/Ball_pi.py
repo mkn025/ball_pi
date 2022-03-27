@@ -1,5 +1,6 @@
 # Ball_pi med rami sine forberinger
 
+
 import pygame
 from math import pi as π
 pygame.init()
@@ -131,8 +132,9 @@ while True:
     
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 2000:
-        pygame.quit()
+    if stor_ball_pos_x > 5000:
+       pygame.quit()
+       print(Antall_kolisjoner) 
 
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
@@ -146,3 +148,7 @@ while True:
 
 
     pygame.display.update()
+
+
+
+
