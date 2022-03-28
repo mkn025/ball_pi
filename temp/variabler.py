@@ -1,7 +1,1 @@
-import pygame
-
-def tekst():
-    print("det funker")
-
-
-tekst()
+# skript that prints 1 22 333 4444 55555 666666
