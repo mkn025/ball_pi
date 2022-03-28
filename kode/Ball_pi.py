@@ -149,7 +149,7 @@ while True:
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
-    tekst(1000,150,"π = ", round(π,7),"")
+    tekst(1000,150,round(π,7),"")
 
 
     pygame.display.update()
