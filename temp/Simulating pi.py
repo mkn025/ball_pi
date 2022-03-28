@@ -11,7 +11,6 @@ fps = 120
 
 # Farger
 background = (30,30,30)
-color_ball = (220,244,255)
 black = (0,0,0)
 blue = (125, 177, 244)
 ball_color  = (95, 137, 140)
