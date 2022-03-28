@@ -1,4 +1,5 @@
-# Ball_pi med rami sine forberinger
+#Finne π ved kollisjon
+
 import pygame
 from math import pi as π
 import time
