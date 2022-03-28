@@ -1,4 +1,5 @@
-# Ball_pi med rami sine forberinger
+#Finne π ved kollisjon
+
 import pygame
 from math import pi as π
 pygame.init()
@@ -10,7 +11,6 @@ fps = 120
 
 # Farger
 Bakgrunn = (30,30,30)
-farge_ball = (220,244,255)
 svart = (0,0,0)
 blue = (125, 177, 244)
 ball_farge  = (95, 137, 140)
