@@ -1,5 +1,5 @@
 # Ball_pi med rami sine forberinger
-
+# bestvenn
 
 import pygame
 from math import pi as π
