@@ -140,7 +140,7 @@ while True:
     
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 13000:
+    if stor_ball_pos_x > 3000:
        pygame.quit()
        print(Antall_kolisjoner) 
        print("--- %s seconds ---" % (time.time() - start_time))
