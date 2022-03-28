@@ -1,5 +1,4 @@
 # Ball_pi med rami sine forberinger
-
 import pygame
 from math import pi as π
 pygame.init()
@@ -43,13 +42,13 @@ potens_radius = hundre_potens*2
 # bevegelses varibler
 
     # stor ball
-radius_stor_ball = 50 * (potens_radius)
+radius_stor_ball = 100 * (potens_radius)
 stor_ball_pos_x = 700
 stor_ball_pos_y = 500 - radius_stor_ball
 
 
     # liten ball 
-radius_liten_ball = 25 #* (potens_radius)
+radius_liten_ball = 50 #* (potens_radius)
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
@@ -93,11 +92,11 @@ while True:
     bakke(blue)
 
     # Grunnbevegelse 
-    stor_ball_pos_x += v2_start  # endret fra - til +
+    stor_ball_pos_x += v2_start
     liten_ball_pos_x += v1_start
 
     # støt med annen ball 
-    if (stor_ball_pos_x - radius_stor_ball) <= (liten_ball_pos_x + radius_liten_ball): #endret == til <=
+    if (stor_ball_pos_x - radius_stor_ball) <= (liten_ball_pos_x + radius_liten_ball): 
         kolisjon = True
         Antall_kolisjoner += 1
     else:
@@ -137,7 +136,7 @@ while True:
     
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 10000:
+    if stor_ball_pos_x > 13000:
        pygame.quit()
        print(Antall_kolisjoner) 
 
@@ -153,7 +152,3 @@ while True:
 
 
     pygame.display.update()
-
-
-
-
