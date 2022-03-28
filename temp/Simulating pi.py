@@ -1,4 +1,4 @@
-# Ball_pi med rami sine forberinger
+# Ball_pi med Rami sine forberinger
 import pygame
 from math import pi as π
 pygame.init()
@@ -21,8 +21,8 @@ clock = pygame.time.Clock()
 
 
 # elementer:
-def ground(farge):
-    pygame.draw.rect(window, farge, (0,500,x_vin,y_vin), width=0)
+def ground(color):
+    pygame.draw.rect(window, color, (0,500,x_vin,y_vin), width=0)
 
 def stor_ball(x_kod, y_kod, radius):
     pygame.draw.circle(window, ball_color, (x_kod,y_kod), radius, width=0)
@@ -48,7 +48,7 @@ big_ball_pos_y = 500 - radius_big_ball
 
 
     # small ball 
-radius_small_ball = 50 #* (potens_radius)
+radius_small_ball = 50
 small_ball_pos_x = 0 + radius_small_ball + 100
 small_ball_pos_y = big_ball_pos_y + radius_big_ball - radius_small_ball
 
