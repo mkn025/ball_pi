@@ -1,6 +1,7 @@
 # Ball_pi med rami sine forberinger
 import pygame
 from math import pi as π
+import time
 pygame.init()
 pygame.font.init()
 
@@ -17,6 +18,9 @@ ball_farge  = (95, 137, 140)
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
 clock = pygame.time.Clock()
+
+# kjøretid
+start_time = time.time()
 
 
 # elementer:
@@ -138,6 +142,8 @@ while True:
     if stor_ball_pos_x > 13000:
        pygame.quit()
        print(Antall_kolisjoner) 
+       print("--- %s seconds ---" % (time.time() - start_time))
+
 
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
@@ -151,3 +157,8 @@ while True:
 
 
     pygame.display.update()
+    clock.tick(fps)
+    
+
+
+
