@@ -7,7 +7,7 @@ pygame.font.init()
 
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
-fps = 12000000
+fps = 120
 
 # Farger
 Bakgrunn = (30,30,30)
