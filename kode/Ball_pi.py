@@ -24,6 +24,14 @@ clock = pygame.time.Clock()
 start_time = time.time()
 
 
+# prints runtime of skript
+def runtime():
+    runtime = time.time() - start_time
+    tekst(1000,200,"Runtime:",round((runtime),2))
+
+
+
+
 # elementer:
 def bakke(farge):
     pygame.draw.rect(vindu, farge, (0,500,x_vin,y_vin), width=0)
@@ -140,7 +148,8 @@ while True:
     
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 3000:
+    if stor_ball_pos_x > x_vin + radius_stor_ball:
+        
        pygame.quit()
        print(Antall_kolisjoner) 
        print("--- %s seconds ---" % (time.time() - start_time))
@@ -149,13 +158,13 @@ while True:
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
-
+    
 
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
-
+    runtime()
 
     pygame.display.update()
     clock.tick(fps)
