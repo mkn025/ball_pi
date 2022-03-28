@@ -4,6 +4,7 @@ from math import pi as π
 pygame.init()
 pygame.font.init()
 
+# Viktige
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
 fps = 120
@@ -124,8 +125,6 @@ while True:
     elif collision_with_wall == True:
         sum_collision += 1 
         collision_with_wall = False
-
-
 
     # støt med veg
     if small_ball_pos_x < 0 + radius_small_ball:
