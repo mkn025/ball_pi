@@ -1,10 +1,8 @@
-# Ball_pi med Rami sine forberinger
 import pygame
 from math import pi as π
 pygame.init()
 pygame.font.init()
 
-# Viktige
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
 fps = 120
@@ -24,10 +22,10 @@ clock = pygame.time.Clock()
 def ground(color):
     pygame.draw.rect(window, color, (0,500,x_vin,y_vin), width=0)
 
-def stor_ball(x_kod, y_kod, radius):
+def big_ball(x_kod, y_kod, radius):
     pygame.draw.circle(window, ball_color, (x_kod,y_kod), radius, width=0)
 
-def liten_ball(x_kod, y_kod, radius):
+def small_ball(x_kod, y_kod, radius):
     pygame.draw.circle(window, ball_color, (x_kod,y_kod), radius, width=0)
 
 
@@ -139,8 +137,8 @@ while True:
        print(sum_collision) 
 
     # rendre ballene 
-    stor_ball(big_ball_pos_x,big_ball_pos_y,radius_big_ball)
-    liten_ball(small_ball_pos_x,small_ball_pos_y,radius_small_ball)
+    big_ball(big_ball_pos_x,big_ball_pos_y,radius_big_ball)
+    small_ball(small_ball_pos_x,small_ball_pos_y,radius_small_ball)
 
 
 
