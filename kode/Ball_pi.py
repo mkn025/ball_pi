@@ -137,7 +137,7 @@ while True:
     
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 5000:
+    if stor_ball_pos_x > 10000:
        pygame.quit()
        print(Antall_kolisjoner) 
 
@@ -149,7 +149,7 @@ while True:
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
-    tekst(1000,150,round(π,5),"")
+    tekst(1000,150,round(π,7),"")
 
 
     pygame.display.update()
