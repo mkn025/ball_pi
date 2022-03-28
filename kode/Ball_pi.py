@@ -1,6 +1,6 @@
 # Ball_pi med rami sine forberinger
 # bestvenn
-
+#bestevven = "bestevven"
 import pygame
 from math import pi as π
 pygame.init()
