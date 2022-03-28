@@ -1,6 +1,5 @@
 # Ball_pi med rami sine forberinger
-# bestvenn
-#bestevven = "bestevven"
+
 import pygame
 from math import pi as π
 pygame.init()
@@ -50,7 +49,7 @@ stor_ball_pos_y = 500 - radius_stor_ball
 
 
     # liten ball 
-radius_liten_ball = 25 * (potens_radius)
+radius_liten_ball = 25 #* (potens_radius)
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
