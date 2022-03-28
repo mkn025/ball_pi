@@ -1,17 +1,18 @@
-#Finne π ved kollisjon
+# Ball_pi med rami sine forberinger
+
 
 import pygame
 from math import pi as π
-import time
 pygame.init()
 pygame.font.init()
 
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
-fps = 120
+fps = 12000000
 
 # Farger
 Bakgrunn = (30,30,30)
+farge_ball = (220,244,255)
 svart = (0,0,0)
 blue = (125, 177, 244)
 ball_farge  = (95, 137, 140)
@@ -19,17 +20,6 @@ ball_farge  = (95, 137, 140)
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
 clock = pygame.time.Clock()
-
-# kjøretid
-start_time = time.time()
-
-
-# prints runtime of skript
-def runtime():
-    runtime = time.time() - start_time
-    tekst(1000,200,"Runtime:",round((runtime),2))
-
-
 
 
 # elementer:
@@ -54,13 +44,13 @@ potens_radius = hundre_potens*2
 # bevegelses varibler
 
     # stor ball
-radius_stor_ball = 100 * (potens_radius)
+radius_stor_ball = 50 * (potens_radius)
 stor_ball_pos_x = 700
 stor_ball_pos_y = 500 - radius_stor_ball
 
 
     # liten ball 
-radius_liten_ball = 50 #* (potens_radius)
+radius_liten_ball = 25 * (potens_radius)
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
@@ -85,10 +75,6 @@ def tekst(x,y,varibler, tektst):
     vindu.blit(tekts_som_vises,(x, y))
 
 
-
-
-
-
 # telling av kolisjon
 Antall_kolisjoner = 0  
 
@@ -104,11 +90,11 @@ while True:
     bakke(blue)
 
     # Grunnbevegelse 
-    stor_ball_pos_x += v2_start
+    stor_ball_pos_x += v2_start  # endret fra - til +
     liten_ball_pos_x += v1_start
 
     # støt med annen ball 
-    if (stor_ball_pos_x - radius_stor_ball) <= (liten_ball_pos_x + radius_liten_ball): 
+    if (stor_ball_pos_x - radius_stor_ball) <= (liten_ball_pos_x + radius_liten_ball): #endret == til <=
         kolisjon = True
         Antall_kolisjoner += 1
     else:
@@ -148,27 +134,23 @@ while True:
     
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > x_vin + radius_stor_ball:
-        
+    if stor_ball_pos_x > 5000:
        pygame.quit()
        print(Antall_kolisjoner) 
-       print("--- %s seconds ---" % (time.time() - start_time))
-
 
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
-    
+
 
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
-    tekst(1000,150,round(π,7),"")
-    runtime()
+    tekst(1000,150,round(π,5),"")
+
 
     pygame.display.update()
-    clock.tick(fps)
-    
+
 
 
 
