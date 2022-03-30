@@ -94,7 +94,9 @@ while True:
 
     if kolisjon == True:
         # endring av fart og retning
-        
+
+
+
     
         # utregninger for elastisk kolisjon
         sum_av_M = m2 + m1        
