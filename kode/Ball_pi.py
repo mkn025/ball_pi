@@ -96,6 +96,7 @@ while True:
         # endring av fart og retning
 
     
+    
         # utregninger for elastisk kolisjon
         sum_av_M = m2 + m1        
         v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
