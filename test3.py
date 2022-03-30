@@ -13,7 +13,7 @@ pygame.font.init()
 # desimaler av pi 
 
 
-antall_siffer = random.randint(1,4) #float(input("Hvor mange siffer av pi? : "))
+antall_siffer = random.randint(1,5) #float(input("Hvor mange siffer av pi? : "))
 
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
