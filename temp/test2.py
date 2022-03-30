@@ -48,7 +48,7 @@ def runtime():
 
     # stor ball
 radius_stor_ball = 100
-stor_ball_pos_x = 700
+stor_ball_pos_x = 400
 stor_ball_pos_y = 500 - radius_stor_ball
 
     # liten ball 
@@ -59,7 +59,7 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 # Fysikk variabler baller  
 
-v2_start = -300/(10**(antall_siffer-1)) # farten stor ball
+v2_start = -30/(10**(antall_siffer-1)) # farten stor ball
 m2 = 0.01 * (100**(antall_siffer))
 
 v1_start = 0   # farten liten ball
@@ -98,7 +98,7 @@ while True:
 
     # tekst som vises i bilde
    
-    print(v2_start,v1_start)
+    #print(v2_start,v1_start)
 
     if kolisjon == True:
         # endring av fart og retning
@@ -120,12 +120,12 @@ while True:
         kolisjon_med_vegg = False
 
     # støt med veg
-    if liten_ball_pos_x - radius_liten_ball < 0:
+    if liten_ball_pos_x - radius_liten_ball <= 0:
         v1_start *= -1
         kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 13000:
+    if stor_ball_pos_x > 13000000:
        pygame.quit()
        runtime()
        print(Antall_kolisjoner)
