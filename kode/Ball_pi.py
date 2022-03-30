@@ -39,12 +39,12 @@ hundre_potens = antall_siffer
 # bevegelses varibler
 
     # stor ball
-radius_stor_ball = 100
+radius_stor_ball = 75
 stor_ball_pos_x = 700
 stor_ball_pos_y = 500 - radius_stor_ball
 
     # liten ball 
-radius_liten_ball = 50
+radius_liten_ball = 75
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 

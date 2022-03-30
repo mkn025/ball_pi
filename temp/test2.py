@@ -6,9 +6,11 @@ from math import pi as π
 pygame.init()
 pygame.font.init()
 
+# desimaler av pi 
+antall_siffer = float(input("Hvor mange siffer av π? : "))
+
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
-fps = 120
 
 # Farger
 Bakgrunn = (30,30,30)
@@ -31,28 +33,18 @@ def stor_ball(x_kod, y_kod, radius):
 def liten_ball(x_kod, y_kod, radius):
     pygame.draw.circle(vindu, ball_farge, (x_kod,y_kod), radius, width=0)
 
-
-# desimaler av pi 
-antall_siffer = float(input("Hvor mange siffer av π? : "))
-hundre_potens = antall_siffer
-
-
-
 # runtime
 start_time = time.time()
 def runtime():
     print("Runtime: " + str(time.time() - start_time) + " seconds")
 
-
-# bevegelses varibler
-
-    # stor ball
-radius_stor_ball = 100
+# stor ball
+radius_stor_ball = 75
 stor_ball_pos_x = 400
 stor_ball_pos_y = 500 - radius_stor_ball
 
-    # liten ball 
-radius_liten_ball = 50
+# liten ball 
+radius_liten_ball = 75
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
@@ -121,13 +113,14 @@ while True:
         kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 13000000:
+    if stor_ball_pos_x > 10000:
        pygame.quit()
        runtime()
        print(Antall_kolisjoner)
 
 
     # rendre ballene 
+    
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
 
@@ -135,4 +128,6 @@ while True:
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
 
+    
     pygame.display.update()
+        
