@@ -7,13 +7,20 @@ som bruker kolisjonen av blokker til å rengne ut pi.
 
 
 
-forskjellige runtimes 
-
+Forskjellige runtimes  for martineldeknutsen Gaming PC
 antall siffer = x akse
 tid i sek = y akse
 
+x   y
+1   1.8 
+2   1.9
+3   2.1
+4   7.2
+5   44.7
+6   409.05 
 
-x  y
+
+
 
 
 
