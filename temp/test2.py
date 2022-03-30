@@ -1,5 +1,6 @@
 #Finne π ved kollisjon
 
+import time
 import pygame
 from math import pi as π
 pygame.init()
@@ -36,6 +37,13 @@ antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = antall_siffer
 
 
+
+# runtime
+start_time = time.time()
+def runtime():
+    print("Runtime: " + str(time.time() - start_time) + " seconds")
+
+
 # bevegelses varibler
 
     # stor ball
@@ -51,7 +59,7 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 # Fysikk variabler baller  
 
-v2_start = -5 # farten stor ball
+v2_start = -300/(10**(antall_siffer-1)) # farten stor ball
 m2 = 0.01 * (100**(antall_siffer))
 
 v1_start = 0   # farten liten ball
@@ -82,11 +90,11 @@ while True:
     liten_ball_pos_x += v1_start
 
     # støt med annen ball 
-    if (stor_ball_pos_x - radius_stor_ball) <= (liten_ball_pos_x + radius_liten_ball): 
-        kolisjon = True
-        Antall_kolisjoner += 1
-    else:
+    if (liten_ball_pos_x + radius_liten_ball) < (stor_ball_pos_x - radius_stor_ball) or (liten_ball_pos_x - radius_liten_ball) > (stor_ball_pos_x + radius_stor_ball): 
         kolisjon = False
+    else:
+        Antall_kolisjoner += 1
+        kolisjon = True
 
     # tekst som vises i bilde
    
@@ -96,7 +104,7 @@ while True:
         # endring av fart og retning
 
     
-
+    
         # utregninger for elastisk kolisjon
         sum_av_M = m2 + m1        
         v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
@@ -112,14 +120,16 @@ while True:
         kolisjon_med_vegg = False
 
     # støt med veg
-    if liten_ball_pos_x < 0 + radius_liten_ball:
-        v1_start = -v1_start
+    if liten_ball_pos_x - radius_liten_ball < 0:
+        v1_start *= -1
         kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
     if stor_ball_pos_x > 13000:
        pygame.quit()
-       print(Antall_kolisjoner) 
+       runtime()
+       print(Antall_kolisjoner)
+
 
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
