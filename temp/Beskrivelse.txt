@@ -7,3 +7,13 @@ som bruker kolisjonen av blokker til å rengne ut pi.
 
 
 
+forskjellige runtimes 
+
+antall siffer = x akse
+tid i sek = y akse
+
+
+x  y
+
+
+
