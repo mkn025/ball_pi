@@ -1,11 +1,17 @@
+from cProfile import run
+import time
 
-# fuction that cecks variable type
-def variable_type(variable):
-    if isinstance(variable, int):
-        return "int"
-    elif isinstance(variable, float):
-        return "float"
-    elif isinstance(variable, str):
-        return "string"
-    else:
-        return "unknown"
+
+# function that prints runtimes of program
+start_time = time.time()
+def runtime():
+    print("Runtime: " + str(time.time() - start_time) + " seconds")
+
+
+
+for n  in range(1,1000):
+    print(n)
+
+
+
+round(runtime(),)

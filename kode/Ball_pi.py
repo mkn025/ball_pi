@@ -1,5 +1,6 @@
 #Finne π ved kollisjon
 
+import time
 import pygame
 from math import pi as π
 pygame.init()
@@ -34,6 +35,13 @@ def liten_ball(x_kod, y_kod, radius):
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = antall_siffer
+
+
+
+# runtime
+start_time = time.time()
+def runtime():
+    print("Runtime: " + str(time.time() - start_time) + " seconds")
 
 
 # bevegelses varibler
@@ -119,7 +127,9 @@ while True:
     # stopping av simulasjonen 
     if stor_ball_pos_x > 13000:
        pygame.quit()
-       print(Antall_kolisjoner) 
+       runtime()
+       print(Antall_kolisjoner)
+
 
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
@@ -128,5 +138,6 @@ while True:
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
+
 
     pygame.display.update()
