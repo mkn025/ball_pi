@@ -3,6 +3,7 @@
 import time
 import pygame
 from math import pi as π
+
 pygame.init()
 pygame.font.init()
 
@@ -39,19 +40,19 @@ def runtime():
     print("Runtime: " + str(time.time() - start_time) + " seconds")
 
 # stor ball
-radius_stor_ball = 75
-stor_ball_pos_x = 400
+radius_stor_ball = 150
+stor_ball_pos_x = 551
 stor_ball_pos_y = 500 - radius_stor_ball
 
 # liten ball 
-radius_liten_ball = 75
+radius_liten_ball = 150
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 
 # Fysikk variabler baller  
 
-v2_start = -30/(10**(antall_siffer-1)) # farten stor ball
+v2_start = -300/(10**(antall_siffer-1)) # farten stor ball
 m2 = 0.01 * (100**(antall_siffer))
 
 v1_start = 0   # farten liten ball
@@ -90,7 +91,7 @@ while True:
 
     # tekst som vises i bilde
    
-    #print(v2_start,v1_start)
+    print(v1_start, v2_start)
 
     if kolisjon == True:
         # utregninger for elastisk kolisjon
