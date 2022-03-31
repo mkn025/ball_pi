@@ -9,6 +9,7 @@ pygame.font.init()
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
 
+clock = pygame.time.Clock()
 # Farger
 Bakgrunn = (30,30,30)
 svart = (0,0,0)
@@ -41,7 +42,7 @@ def lyd(lyd_fil):
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
-
+FPS = 200 *hundre_potens
 
 # bevegelses varibler
 
@@ -125,7 +126,7 @@ while True:
         kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 13000:
+    if stor_ball_pos_x > 6000:
        pygame.quit()
        print(Antall_kolisjoner) 
 
@@ -136,5 +137,6 @@ while True:
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
-    tekst(stor_ball_pos_x-radius_stor_ball,stor_ball_pos_y,hundre_potens,"Kg")
+    tekst(stor_ball_pos_x,stor_ball_pos_y,hundre_potens,"Kg")
+    clock.tick(FPS)
     pygame.display.update()
