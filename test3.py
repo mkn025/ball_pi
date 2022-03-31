@@ -1,15 +1,23 @@
-#Finne π ved kollisjon
+#Finne pi ved kollisjon
 
+import random
+import time
 import pygame
-import math
-from math import pi as π
+from math import pi as pi
+
 pygame.init()
 pygame.font.init()
+
+
+
+# desimaler av pi 
+
+
+antall_siffer = 4 #float(input("Hvor mange siffer av pi? : "))
 
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
 
-clock = pygame.time.Clock()
 # Farger
 Bakgrunn = (30,30,30)
 svart = (0,0,0)
@@ -31,39 +39,45 @@ def stor_ball(x_kod, y_kod, radius):
 def liten_ball(x_kod, y_kod, radius):
     pygame.draw.circle(vindu, ball_farge, (x_kod,y_kod), radius, width=0)
 
-#lage lyd
-def lyd(lyd_fil):
+# runtime
+start_time = time.time()
+def runtime():
+    print("Runtime: " + str(time.time() - start_time) + " seconds")
+
+# fuctions that plays a sound file
+
+# legger til noe i en fil
+def add_to_file(file_name, var_name, var_value):
+    with open(file_name, 'a') as f:
+        f.write(f"{var_name} = {var_value}" + '\n')
+
+
+
+def play_sound(sound_file):
     pygame.mixer.init()
-    pygame.mixer.music.load(lyd_fil)
+    pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
     
 
 
-# desimaler av pi 
-antall_siffer = float(input("Hvor mange siffer av π? : "))
-hundre_potens = math.pow(100, antall_siffer-1)
-FPS = 200 *hundre_potens
-
-# bevegelses varibler
-
-    # stor ball
-radius_stor_ball = 100
-stor_ball_pos_x = 400
+# stor ball
+radius_stor_ball = 150
+stor_ball_pos_x = 551
 stor_ball_pos_y = 500 - radius_stor_ball
 
-    # liten ball 
-radius_liten_ball = 50
+# liten ball 
+radius_liten_ball = 150
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 
 # Fysikk variabler baller  
 
-v2_start = -300 / (10**antall_siffer-1) # farten stor ball
-m2 = 1 * (hundre_potens)
+v2_start = -300/(10**(antall_siffer-1)) # farten stor ball
+m2 = 0.01 * (100**(antall_siffer))
 
 v1_start = 0   # farten liten ball
-m1 = 1
+m1 = 0.01 * 100
 
 # tekst
 font = pygame.font.SysFont('arial', 32)
@@ -77,6 +91,10 @@ Antall_kolisjoner = 0
 # kolidering
 kolisjon = False
 kolisjon_med_vegg = False
+
+
+play_sound("/Users/martinknutsen/Documents/GitHub/ball_pi/CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+
 
 while True:
     for event in pygame.event.get():
@@ -95,15 +113,12 @@ while True:
     else:
         Antall_kolisjoner += 1
         kolisjon = True
+
     # tekst som vises i bilde
    
-    #print(v2_start,v1_start)
+    print(v1_start, v2_start)
 
     if kolisjon == True:
-        # endring av fart og retning
-
-    
-
         # utregninger for elastisk kolisjon
         sum_av_M = m2 + m1        
         v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
@@ -111,32 +126,42 @@ while True:
 
         v1_start = v1 
         v2_start = v2
-        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon = False
+        play_sound("/Users/martinknutsen/Documents/GitHub/ball_pi/CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+
         # Endring av fart uten fysikk
 
     elif kolisjon_med_vegg == True:
         Antall_kolisjoner += 1 
-        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon_med_vegg = False
 
     # støt med veg
-    if liten_ball_pos_x < 0 + radius_liten_ball:
+    if liten_ball_pos_x - radius_liten_ball <= 0:
         v1_start *= -1
         kolisjon_med_vegg = True
+        play_sound("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 6000:
+    if stor_ball_pos_x > x_vin - radius_stor_ball:
        pygame.quit()
-       print(Antall_kolisjoner) 
+       runtime() 
+       print(Antall_kolisjoner)
+       # adds runtime to test.txt file
+       add_to_file("test.txt",antall_siffer,(time.time() - start_time))
+
+
+
 
     # rendre ballene 
+    
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
-    tekst(1000,150,round(π,7),"")
-    tekst(stor_ball_pos_x,stor_ball_pos_y,hundre_potens,"Kg")
-    clock.tick(FPS)
+    tekst(1000,150,round(pi,7),"")
+
+    
     pygame.display.update()
+        
