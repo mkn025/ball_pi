@@ -13,7 +13,7 @@ pygame.font.init()
 # desimaler av pi 
 
 
-antall_siffer = random.randint(1,5) #float(input("Hvor mange siffer av pi? : "))
+antall_siffer = 4 #float(input("Hvor mange siffer av pi? : "))
 
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
@@ -44,12 +44,20 @@ start_time = time.time()
 def runtime():
     print("Runtime: " + str(time.time() - start_time) + " seconds")
 
+# fuctions that plays a sound file
 
 # legger til noe i en fil
 def add_to_file(file_name, var_name, var_value):
     with open(file_name, 'a') as f:
         f.write(f"{var_name} = {var_value}" + '\n')
 
+
+
+def play_sound(sound_file):
+    pygame.mixer.init()
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play()
+    
 
 
 # stor ball
@@ -84,6 +92,10 @@ Antall_kolisjoner = 0
 kolisjon = False
 kolisjon_med_vegg = False
 
+
+play_sound("/Users/martinknutsen/Documents/GitHub/ball_pi/CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -115,6 +127,8 @@ while True:
         v1_start = v1 
         v2_start = v2
         kolisjon = False
+        play_sound("/Users/martinknutsen/Documents/GitHub/ball_pi/CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+
         # Endring av fart uten fysikk
 
     elif kolisjon_med_vegg == True:
@@ -125,6 +139,8 @@ while True:
     if liten_ball_pos_x - radius_liten_ball <= 0:
         v1_start *= -1
         kolisjon_med_vegg = True
+        play_sound("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+
 
     # stopping av simulasjonen 
     if stor_ball_pos_x > x_vin - radius_stor_ball:
@@ -134,7 +150,7 @@ while True:
        # adds runtime to test.txt file
        add_to_file("test.txt",antall_siffer,(time.time() - start_time))
 
-       
+
 
 
     # rendre ballene 
