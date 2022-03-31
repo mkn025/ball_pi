@@ -29,6 +29,13 @@ def stor_ball(x_kod, y_kod, radius):
 def liten_ball(x_kod, y_kod, radius):
     pygame.draw.circle(vindu, ball_farge, (x_kod,y_kod), radius, width=0)
 
+#lage lyd
+def lyd(lyd_fil):
+    pygame.mixer.init()
+    pygame.mixer.music.load(lyd_fil)
+    pygame.mixer.music.play()
+    
+
 
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
@@ -102,11 +109,13 @@ while True:
 
         v1_start = v1 
         v2_start = v2
+        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon = False
         # Endring av fart uten fysikk
 
     elif kolisjon_med_vegg == True:
         Antall_kolisjoner += 1 
+        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon_med_vegg = False
 
     # støt med veg
