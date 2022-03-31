@@ -39,7 +39,7 @@ hundre_potens = antall_siffer
 
     # stor ball
 radius_stor_ball = 100
-stor_ball_pos_x = 700
+stor_ball_pos_x = 350
 stor_ball_pos_y = 500 - radius_stor_ball
 
     # liten ball 
@@ -88,7 +88,7 @@ while True:
         kolisjon = True
     # tekst som vises i bilde
    
-    print(v2_start,v1_start)
+    #print(v2_start,v1_start)
 
     if kolisjon == True:
         # endring av fart og retning
