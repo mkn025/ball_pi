@@ -1,6 +1,7 @@
 #Finne π ved kollisjon
 
 import pygame
+import math
 from math import pi as π
 pygame.init()
 pygame.font.init()
@@ -39,7 +40,7 @@ def lyd(lyd_fil):
 
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
-hundre_potens = antall_siffer
+hundre_potens = math.pow(100, antall_siffer-1)
 
 
 # bevegelses varibler
@@ -58,7 +59,7 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 # Fysikk variabler baller  
 
 v2_start = -300 / (10**antall_siffer-1) # farten stor ball
-m2 = 1 * (100**(antall_siffer-1))
+m2 = 1 * (hundre_potens)
 
 v1_start = 0   # farten liten ball
 m1 = 1
@@ -135,5 +136,5 @@ while True:
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
-
+    tekst(stor_ball_pos_x-radius_stor_ball,stor_ball_pos_y,hundre_potens,"Kg")
     pygame.display.update()
