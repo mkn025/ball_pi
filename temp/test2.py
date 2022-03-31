@@ -52,7 +52,7 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 # Fysikk variabler baller  
 
-v2_start = -30/(10**(antall_siffer-1)) # farten stor ball
+v2_start = -20/(10**(antall_siffer-1)) # farten stor ball
 m2 = 0.01 * (100**(antall_siffer))
 
 v1_start = 0   # farten liten ball

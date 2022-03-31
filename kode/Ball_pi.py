@@ -137,6 +137,6 @@ while True:
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
-    tekst(stor_ball_pos_x,stor_ball_pos_y,hundre_potens,"Kg")
+    tekst(stor_ball_pos_x,stor_ball_pos_y,antall_siffer,"Kg")
     clock.tick(FPS)
     pygame.display.update()
