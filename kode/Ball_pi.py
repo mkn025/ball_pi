@@ -50,11 +50,11 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 # Fysikk variabler baller  
 
-v2_start = -300/(10**antall_siffer-1) # farten stor ball
-m2 = 0.01 * (100**(antall_siffer))
+v2_start = -30 /(10**antall_siffer-1) # farten stor ball
+m2 = 1 * (100**(antall_siffer-1))
 
 v1_start = 0   # farten liten ball
-m1 = 0.01 * 100
+m1 = 1
 
 # tekst
 font = pygame.font.SysFont('arial', 32)
@@ -111,7 +111,7 @@ while True:
 
     # støt med veg
     if liten_ball_pos_x < 0 + radius_liten_ball:
-        v1_start = -v1_start
+        v1_start *= -1
         kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
