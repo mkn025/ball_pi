@@ -7,7 +7,6 @@ pygame.font.init()
 
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
-fps = 120
 
 # Farger
 Bakgrunn = (30,30,30)
@@ -39,19 +38,19 @@ hundre_potens = antall_siffer
 # bevegelses varibler
 
     # stor ball
-radius_stor_ball = 75
+radius_stor_ball = 100
 stor_ball_pos_x = 700
 stor_ball_pos_y = 500 - radius_stor_ball
 
     # liten ball 
-radius_liten_ball = 75
+radius_liten_ball = 50
 liten_ball_pos_x = 0 + radius_liten_ball + 100
 liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 
 # Fysikk variabler baller  
 
-v2_start = -5 # farten stor ball
+v2_start = -300/(10**antall_siffer-1) # farten stor ball
 m2 = 0.01 * (100**(antall_siffer))
 
 v1_start = 0   # farten liten ball
@@ -82,12 +81,11 @@ while True:
     liten_ball_pos_x += v1_start
 
     # støt med annen ball 
-    if (stor_ball_pos_x - radius_stor_ball) <= (liten_ball_pos_x + radius_liten_ball): 
-        kolisjon = True
-        Antall_kolisjoner += 1
-    else:
+    if (liten_ball_pos_x + radius_liten_ball) < (stor_ball_pos_x - radius_stor_ball) or (liten_ball_pos_x - radius_liten_ball) > (stor_ball_pos_x + radius_stor_ball): 
         kolisjon = False
-
+    else:
+        Antall_kolisjoner += 1
+        kolisjon = True
     # tekst som vises i bilde
    
     print(v2_start,v1_start)
