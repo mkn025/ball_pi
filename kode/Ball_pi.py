@@ -48,7 +48,7 @@ FPS = 200 *hundre_potens
 
     # stor ball
 radius_stor_ball = 100
-stor_ball_pos_x = 320
+stor_ball_pos_x = 600
 stor_ball_pos_y = 500 - radius_stor_ball
 
     # liten ball 
@@ -111,13 +111,13 @@ while True:
 
         v1_start = v1 
         v2_start = v2
-        #lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon = False
         # Endring av fart uten fysikk
 
     elif kolisjon_med_vegg == True:
         Antall_kolisjoner += 1 
-        #lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon_med_vegg = False
 
     # støt med veg
