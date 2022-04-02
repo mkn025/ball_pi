@@ -9,7 +9,6 @@ pygame.font.init()
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
 
-clock = pygame.time.Clock()
 # Farger
 Bakgrunn = (30,30,30)
 svart = (0,0,0)
@@ -18,8 +17,6 @@ ball_farge  = (95, 137, 140)
 
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
-clock = pygame.time.Clock()
-
 
 # elementer:
 def bakke(farge):
@@ -38,17 +35,15 @@ def lyd(lyd_fil):
     pygame.mixer.music.play()
     
 
-
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
-FPS = 200 *hundre_potens
 
 # bevegelses varibler
 
     # stor ball
 radius_stor_ball = 100
-stor_ball_pos_x = 600
+stor_ball_pos_x = 310
 stor_ball_pos_y = 500 - radius_stor_ball
 
     # liten ball 
@@ -59,7 +54,7 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 # Fysikk variabler baller  
 
-v2_start = -300 / (10**antall_siffer) # farten stor ball
+v2_start = -300 / (10**antall_siffer-1) # farten stor ball
 m2 = 1 * (hundre_potens)
 
 v1_start = 0   # farten liten ball
@@ -96,8 +91,6 @@ while True:
         Antall_kolisjoner += 1
         kolisjon = True
     # tekst som vises i bilde
-   
-    #print(v2_start,v1_start)
 
     if kolisjon == True:
         # endring av fart og retning
@@ -111,12 +104,14 @@ while True:
 
         v1_start = v1 
         v2_start = v2
+
         lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon = False
         # Endring av fart uten fysikk
 
     elif kolisjon_med_vegg == True:
         Antall_kolisjoner += 1 
+        
         lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon_med_vegg = False
 
@@ -126,7 +121,7 @@ while True:
         kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > 6000:
+    if stor_ball_pos_x > 15000:
        pygame.quit()
        print(Antall_kolisjoner) 
 
@@ -138,5 +133,5 @@ while True:
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
     tekst(stor_ball_pos_x,stor_ball_pos_y,antall_siffer,"Kg")
-    clock.tick(FPS)
+    
     pygame.display.update()
