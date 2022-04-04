@@ -34,7 +34,6 @@ def lyd(lyd_fil):
     pygame.mixer.music.load(lyd_fil)
     pygame.mixer.music.play()
     
-
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
