@@ -53,8 +53,8 @@ gray = (190,190,190)
 red = (200,0,0)
  
 pygame.init()
-power = math.pow(100, 6)
-power2 = math.pow(10,5)
+power = math.pow(100, 5)
+power2 = math.pow(10,4)
 background = pygame.display.set_mode((width, height))
  
 SquareBig = Square(50, (320,200), power, -0.9/power2)
