@@ -50,7 +50,7 @@ while True:
     #Bevegelse
     if bevegelses:
         x_pos_liten_ball += dx
-    y_pos_liten_ball += dx
+    y_pos_liten_ball += dy
     if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 + radius_stor_sirkel):
         bevegelses = False
         dy = -dy
