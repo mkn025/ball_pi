@@ -28,12 +28,28 @@ radius_liten_ball = 10
 x_pos_liten_ball, y_pos_liten_ball = x_vin/2-radius_stor_sirkel, y_vin/2
 
 
+bevegelses = True
+
+dx = 1
+dy = 1
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
     
+
+    #  make the ball move around the circle
+    if bevegelses:
+        x_pos_liten_ball += dx
+    y_pos_liten_ball += dx
+    if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 + radius_stor_sirkel):
+        bevegelses = False
+        dy = -dy
+        
+    
+
 
     vindu.fill(Bakgrunn)
     # hele sikel
