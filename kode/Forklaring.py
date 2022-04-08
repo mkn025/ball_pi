@@ -30,7 +30,16 @@ def linjer(start_pos, end_pos,width):
 
 x_pos_liten_ball, y_pos_liten_ball = x_vin/2-radius_stor_sirkel, y_vin/2
 
+<<<<<<< HEAD
     
+=======
+
+bevegelses = True
+
+dx = 1
+dy = 1
+
+>>>>>>> 0d91789c8f58924351ebcd7f74ea14fd24ea91e3
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
