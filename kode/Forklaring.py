@@ -1,3 +1,4 @@
+from pickle import FALSE
 import pygame
 
 x_vin,y_vin = 1280,720
@@ -35,11 +36,14 @@ dy = 1
 def bakgrunn():
     vindu.fill(Bakgrunn) 
 
-def linjer(start_pos, end_pos,width,farge):
+def linjer(farge,start_pos, end_pos,width):
     pygame.draw.line(vindu, farge, (start_pos), (end_pos), width=width)
 
 def sirkel(Kordinater,radius,width):
     pygame.draw.circle(vindu,blue, (Kordinater),radius,width=width)
+
+treff1 = False
+treff2 = False
 
 #program    
 while True:
@@ -61,17 +65,22 @@ while True:
     if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 + radius_stor_sirkel):
         bevegelses_x = False
         dy = -dy
+        treff1 = True
+
+
     if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 - radius_stor_sirkel):
         dy = -dy
         bevegelses_x = True
+        treff2 = True
 
 
 
 
     #Vindu farge
     bakgrunn()
-
-    linjer((x_vin/2-radius_stor_sirkel, y_vin/2),(x_pos_liten_ball, y_pos_liten_ball),3,rød)
+    
+ 
+        
 
     #Stor sikel
     sirkel((x_vin/2,y_vin/2),radius_stor_sirkel,1)
@@ -80,10 +89,22 @@ while True:
     sirkel((x_pos_liten_ball,y_pos_liten_ball),radius_liten_ball,0)
     
     # vannrett linje
-    linjer((0,y_vin/2),(x_vin,y_vin/2),1,white)
+    linjer(white,(0,y_vin/2),(x_vin,y_vin/2),1)
     
     # loddrett linje
-    linjer((x_vin/2,0),(x_vin/2,y_vin),1,white)
+    linjer(white,(x_vin/2,0),(x_vin/2,y_vin),1)
     
-
+    #linje som følger sirkel
+    if treff1 == True:
+        linjer(rød,(x_vin/2-radius_stor_sirkel, y_vin/2),(x_vin/2,y_vin/2+radius_stor_sirkel),3)
+        
+    if treff1 == False:
+        linjer(rød,(x_vin/2-radius_stor_sirkel, y_vin/2),(x_pos_liten_ball, y_pos_liten_ball),3)
+    
+    if treff2 == False:
+        linjer(rød,(x_vin/2, y_vin/2 + radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),3)
+    
+    if treff2 == True:
+        linjer(rød,(x_vin/2, y_vin/2 + radius_stor_sirkel),(x_vin/2, y_vin/2-radius_stor_sirkel),3)
+    
     pygame.display.update()
