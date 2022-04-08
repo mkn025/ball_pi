@@ -9,6 +9,7 @@ blue = (125, 177, 244)
 green = (0,255,0)
 ball_farge  = (95, 137, 140)
 white = (255,255,255)
+rød = (255,0,0)
 
 
 vindu = pygame.display.set_mode((x_vin,y_vin))
@@ -24,7 +25,8 @@ radius_stor_sirkel = 200
 radius_liten_ball = 10
 x_pos_liten_ball, y_pos_liten_ball = x_vin/2-radius_stor_sirkel, y_vin/2
 
-bevegelses = True
+bevegelses_x = True
+bevegelses_y = True
 
 dx = 1
 dy = 1
@@ -33,8 +35,8 @@ dy = 1
 def bakgrunn():
     vindu.fill(Bakgrunn) 
 
-def linjer(start_pos, end_pos,width):
-    pygame.draw.line(vindu, white, (start_pos), (end_pos), width=width)
+def linjer(start_pos, end_pos,width,farge):
+    pygame.draw.line(vindu, farge, (start_pos), (end_pos), width=width)
 
 def sirkel(Kordinater,radius,width):
     pygame.draw.circle(vindu,blue, (Kordinater),radius,width=width)
@@ -48,15 +50,28 @@ while True:
     
 
     #Bevegelse
-    if bevegelses:
+    if bevegelses_x:
         x_pos_liten_ball += dx
-    y_pos_liten_ball += dy
+    if bevegelses_y:
+        y_pos_liten_ball += dy
+    
+
+
+
     if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 + radius_stor_sirkel):
-        bevegelses = False
+        bevegelses_x = False
         dy = -dy
+    if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 - radius_stor_sirkel):
+        dy = -dy
+        bevegelses_x = True
+
+
+
 
     #Vindu farge
     bakgrunn()
+
+    linjer((x_vin/2-radius_stor_sirkel, y_vin/2),(x_pos_liten_ball, y_pos_liten_ball),3,rød)
 
     #Stor sikel
     sirkel((x_vin/2,y_vin/2),radius_stor_sirkel,1)
@@ -65,10 +80,10 @@ while True:
     sirkel((x_pos_liten_ball,y_pos_liten_ball),radius_liten_ball,0)
     
     # vannrett linje
-    linjer((0,y_vin/2),(x_vin,y_vin/2),1)
+    linjer((0,y_vin/2),(x_vin,y_vin/2),1,white)
     
     # loddrett linje
-    linjer((x_vin/2,0),(x_vin/2,y_vin),(1))
+    linjer((x_vin/2,0),(x_vin/2,y_vin),1,white)
     
 
     pygame.display.update()
