@@ -26,8 +26,10 @@ radius_stor_sirkel = 200
 # paramentre for ball 
 radius_liten_ball = 10
 
+def linjer(start_pos, end_pos,width):
+    pygame.draw.line(vindu, white, (start_pos), (end_pos), width=width)
 
-
+    
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -38,10 +40,12 @@ while True:
     vindu.fill(Bakgrunn)
     pygame.draw.circle(vindu, blue, (x_vin/2,y_vin/2), radius_stor_sirkel, width=1)
     pygame.draw.circle(vindu, blue, (x_vin/2-radius_stor_sirkel,y_vin/2), radius_liten_ball, width=0)
+    
     # vannrett linje
-    pygame.draw.line(vindu, white, (0,y_vin/2), (x_vin,y_vin/2), width=1)
+    linjer((0,y_vin/2),(x_vin,y_vin/2),1)
     # loddrett linje
-    pygame.draw.line(vindu, white, (x_vin/2,0), (x_vin/2,y_vin), width=1)
+    linjer((x_vin/2,0),(x_vin/2,y_vin),(1))
+    
 
 
     pygame.display.update()
