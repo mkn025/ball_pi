@@ -23,9 +23,9 @@ def bakke(farge):
 radius_stor_sirkel = 200
 
 
-# paramentre for ball 
+# paramentre for liten ball 
 radius_liten_ball = 10
-
+x_pos_liten_ball, y_pos_liten_ball = x_vin/2-radius_stor_sirkel, y_vin/2
 
 
 while True:
@@ -36,8 +36,10 @@ while True:
     
 
     vindu.fill(Bakgrunn)
+    # hele sikel
     pygame.draw.circle(vindu, blue, (x_vin/2,y_vin/2), radius_stor_sirkel, width=1)
-    pygame.draw.circle(vindu, blue, (x_vin/2-radius_stor_sirkel,y_vin/2), radius_liten_ball, width=0)
+    # liten ball som skal kolidere
+    pygame.draw.circle(vindu, blue, (x_pos_liten_ball,y_pos_liten_ball), radius_liten_ball, width=0)
     # vannrett linje
     pygame.draw.line(vindu, white, (0,y_vin/2), (x_vin,y_vin/2), width=1)
     # loddrett linje
