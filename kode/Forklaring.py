@@ -1,4 +1,5 @@
 from pickle import FALSE
+from re import I
 import pygame
 
 x_vin,y_vin = 1280,720
@@ -42,8 +43,9 @@ def linjer(farge,start_pos, end_pos,width):
 def sirkel(Kordinater,radius,width):
     pygame.draw.circle(vindu,blue, (Kordinater),radius,width=width)
 
-treff1 = False
-treff2 = False
+treff_1 = False
+treff_2 = 1
+treff_3 = 1
 
 #program    
 while True:
@@ -65,22 +67,25 @@ while True:
     if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 + radius_stor_sirkel):
         bevegelses_x = False
         dy = -dy
-        treff1 = True
+        treff_1 = True
+        treff_2 = 2 
+
+
 
 
     if x_pos_liten_ball == (x_vin/2) and y_pos_liten_ball == (y_vin/2 - radius_stor_sirkel):
         dy = -dy
         bevegelses_x = True
-        treff2 = True
+        treff_2 = 3
+        treff_3 = 2
+
+        
 
 
 
 
     #Vindu farge
     bakgrunn()
-    
- 
-        
 
     #Stor sikel
     sirkel((x_vin/2,y_vin/2),radius_stor_sirkel,1)
@@ -95,16 +100,20 @@ while True:
     linjer(white,(x_vin/2,0),(x_vin/2,y_vin),1)
     
     #linje som følger sirkel
-    if treff1 == True:
-        linjer(rød,(x_vin/2-radius_stor_sirkel, y_vin/2),(x_vin/2,y_vin/2+radius_stor_sirkel),3)
-        
-    if treff1 == False:
-        linjer(rød,(x_vin/2-radius_stor_sirkel, y_vin/2),(x_pos_liten_ball, y_pos_liten_ball),3)
-    
-    if treff2 == False:
-        linjer(rød,(x_vin/2, y_vin/2 + radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),3)
-    
-    if treff2 == True:
-        linjer(rød,(x_vin/2, y_vin/2 + radius_stor_sirkel),(x_vin/2, y_vin/2-radius_stor_sirkel),3)
-    
+    if treff_1 == False:
+        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_pos_liten_ball,y_pos_liten_ball),3)
+
+    if treff_1 == True:
+        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_vin/2,y_vin/2+radius_stor_sirkel),3)
+
+    if treff_2 == 2:
+        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),3)
+
+    if treff_2 == 3:
+        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_vin/2,y_vin/2 - radius_stor_sirkel),3)
+
+    if treff_3 == 2:
+        linjer(rød,(x_vin/2,y_vin/2 - radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),3)
+
+
     pygame.display.update()
