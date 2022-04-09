@@ -108,22 +108,24 @@ while True:
     linjer(white,(x_vin/2,0),(x_vin/2,y_vin),1)
      
 
-    n = 1
+    
     #linje som følger sirkel
     if treff_1 == False:
-        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_pos_liten_ball,y_pos_liten_ball),n)
+        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_pos_liten_ball,y_pos_liten_ball),2)
 
     if treff_1 == True:
-        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_vin/2,y_vin/2+radius_stor_sirkel),n)
+        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_vin/2,y_vin/2+radius_stor_sirkel),2)
 
     if treff_2 == 2:
-        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),n)
+        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),2)
 
     if treff_2 == 3:
-        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_vin/2,y_vin/2 - radius_stor_sirkel),n)
+        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_vin/2,y_vin/2 - radius_stor_sirkel),2)
 
     if treff_3 == 2:
-        linjer(rød,(x_vin/2,y_vin/2 - radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),n)
+        linjer(rød,(x_vin/2,y_vin/2 - radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),2)
+
+
 
     # adds coordinates to the screen
     tekst("x_pos_liten_ball: " + str(x_pos_liten_ball), font, white, 10, 10)
