@@ -143,6 +143,7 @@ while True:
        runtime()
        break
 
+
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)

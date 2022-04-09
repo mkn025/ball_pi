@@ -1,6 +1,7 @@
-from pickle import FALSE
-from re import I
+
 import pygame
+pygame.init()
+pygame.font.init()
 
 x_vin,y_vin = 1280,720
 
@@ -46,6 +47,13 @@ def sirkel(Kordinater,radius,width):
 treff_1 = False
 treff_2 = 1
 treff_3 = 1
+
+
+# function that adds tekst to the screen
+font = pygame.font.SysFont("comicsansms", 30)
+def tekst(text, font, color, x, y):
+    tekst = font.render(text, True, color)
+    vindu.blit(tekst, (x,y))
 
 #program    
 while True:
@@ -98,22 +106,28 @@ while True:
     
     # loddrett linje
     linjer(white,(x_vin/2,0),(x_vin/2,y_vin),1)
-    
+     
+
+    n = 1
     #linje som følger sirkel
     if treff_1 == False:
-        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_pos_liten_ball,y_pos_liten_ball),3)
+        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_pos_liten_ball,y_pos_liten_ball),n)
 
     if treff_1 == True:
-        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_vin/2,y_vin/2+radius_stor_sirkel),3)
+        linjer(rød,(x_vin/2-radius_stor_sirkel,y_vin/2),(x_vin/2,y_vin/2+radius_stor_sirkel),n)
 
     if treff_2 == 2:
-        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),3)
+        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),n)
 
     if treff_2 == 3:
-        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_vin/2,y_vin/2 - radius_stor_sirkel),3)
+        linjer(rød,(x_vin/2,y_vin/2+radius_stor_sirkel),(x_vin/2,y_vin/2 - radius_stor_sirkel),n)
 
     if treff_3 == 2:
-        linjer(rød,(x_vin/2,y_vin/2 - radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),3)
+        linjer(rød,(x_vin/2,y_vin/2 - radius_stor_sirkel),(x_pos_liten_ball,y_pos_liten_ball),n)
+
+    # adds coordinates to the screen
+    tekst("x_pos_liten_ball: " + str(x_pos_liten_ball), font, white, 10, 10)
+
 
 
     pygame.display.update()
