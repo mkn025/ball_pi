@@ -13,7 +13,7 @@ green = (0,255,0)
 ball_farge  = (95, 137, 140)
 white = (255,255,255)
 rød = (255,0,0)
-
+kul_farge = (255, 203, 164)
 
 vindu = pygame.display.set_mode((x_vin,y_vin))
 
