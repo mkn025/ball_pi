@@ -8,6 +8,12 @@ from math import pi as π
 pygame.init()
 pygame.font.init()
 
+#X-kordinater -> (m1**1/2) * v1
+#Y-kordinater -> (m2**1/2) * v2
+#Stigninstall -> (m1/m2)**1/2
+
+
+
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
 
