@@ -4,7 +4,7 @@ from pickle import TRUE
 import pygame, math
 pygame.init
 
-# farger
+#Farger
 black = (0,0,0)
 white = (255,255,255)
 green = (0,255,0)
@@ -12,7 +12,7 @@ blue = (125, 177, 244)
 yellow = (255,255,0)
 bakgrunn = (30,30,30)
 
-# vindu og klokke
+#Vindu og klokke
 x_vin, y_vin = 1280, 720
 vindu = pygame.display.set_mode((x_vin,y_vin))
 clock = pygame.time.Clock()
@@ -29,11 +29,10 @@ def h(x):
 def g(x):
     return y0 - (math.sqrt(r**2-((x-x0)**2)))
 
-z = -r + x0 
-k = -r + x0
 #Radius stor sirkel
 stor_sikrel_radius = 200
 liten_sirkel_radius = 10
+
 #Liten sirkel kordinater og fart
 start_dx = 1    #Må finne formel til disse to
 dy = -1
