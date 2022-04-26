@@ -10,7 +10,7 @@ pygame.font.init()
 
 #X-kordinater -> (m1**1/2) * v1
 #Y-kordinater -> (m2**1/2) * v2
-#Stigninstall -> (m1/m2)**1/2
+#Stigninstall -> -(m1/m2)**1/2
 
 
 
