@@ -18,8 +18,8 @@ vindu = pygame.display.set_mode((x_vin,y_vin))
 clock = pygame.time.Clock()
 
 font = pygame.font.SysFont('arial', 32)
-def tekst(x,y,varibler, tektst):
-    tekts_som_vises = font.render(f"{varibler} {tektst} ",True,white)
+def tekst(x,y,varibler, tekst):
+    tekts_som_vises = font.render(f"{varibler} {tekst} ",True,white)
     vindu.blit(tekts_som_vises,(x, y))
 
 #Ting til funskjonene
@@ -96,7 +96,7 @@ while True:
         dx = 0
         dy = 0
         Ny_Treff = Treff+1
-        
+
     print("Antall treff er",Ny_Treff)
     tekst(1000,100,Ny_Treff, "Antall treff")
 
