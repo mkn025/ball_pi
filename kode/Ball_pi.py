@@ -5,8 +5,6 @@ import time
 import math
 from math import pi as π
 
-from pyparsing import White
-
 pygame.init()
 pygame.font.init()
 
