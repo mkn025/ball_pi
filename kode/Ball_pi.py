@@ -88,8 +88,8 @@ m1 = 1
 
 # tekst
 font = pygame.font.SysFont('arial', 32)
-def tekst(x,y,varibler, tektst):
-    tekts_som_vises = font.render(f"{varibler} {tektst} ",True,white)
+def tekst(x,y,varibler, tekst):
+    tekts_som_vises = font.render(f"{varibler} {tekst} ",True,white)
     vindu.blit(tekts_som_vises,(x, y))
 
 # telling av kolisjon
