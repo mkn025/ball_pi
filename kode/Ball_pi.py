@@ -5,6 +5,8 @@ import time
 import math
 from math import pi as π
 
+from pyparsing import White
+
 pygame.init()
 pygame.font.init()
 
@@ -22,6 +24,7 @@ Bakgrunn = (30,30,30)
 svart = (0,0,0)
 blue = (125, 177, 244)
 ball_farge  = (95, 137, 140)
+white = (255,255,255)
 
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
@@ -86,7 +89,7 @@ m1 = 1
 # tekst
 font = pygame.font.SysFont('arial', 32)
 def tekst(x,y,varibler, tektst):
-    tekts_som_vises = font.render(f"{varibler} {tektst} ",True,(255,255,255))
+    tekts_som_vises = font.render(f"{varibler} {tektst} ",True,white)
     vindu.blit(tekts_som_vises,(x, y))
 
 # telling av kolisjon
