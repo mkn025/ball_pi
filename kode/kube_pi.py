@@ -51,7 +51,7 @@ ti_potens2 = math.pow(10,antall_siffer-1)
 
 # stor kube
 lengde_stor_kube = 200
-stor_kube_pos_x = 800 #220
+stor_kube_pos_x = 220
 stor_kube_pos_y = 500 - lengde_stor_kube
 
 # liten kube 
