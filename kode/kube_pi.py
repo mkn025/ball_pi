@@ -17,7 +17,8 @@ svart = (0,0,0)
 blue = (125, 177, 244)
 ball_farge  = (95, 137, 140)
 white = (255,255,255)
-
+fps = 165
+clock = pygame.time.Clock()
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
 
@@ -45,7 +46,7 @@ def lyd(lyd_fil):
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
-ti_potens2 = math.pow(10,antall_siffer)
+ti_potens2 = math.pow(10,antall_siffer-1)
 
 
 # stor kube
@@ -153,9 +154,12 @@ while True:
                 v1_start *= -1
                 kolisjon_med_vegg = True
     #stopping av simulasjonen 
+    
     if stor_kube_pos_x > x_vin + lengde_stor_kube:
         print(Antall_kolisjoner)
         runtime()
         break
+
     alle_tegning()
+    clock.tick(fps)
     pygame.display.update()
