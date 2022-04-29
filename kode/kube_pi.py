@@ -47,6 +47,7 @@ hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
 
 
+
 # bevegelses varibler
 
     # stor kube
@@ -62,7 +63,7 @@ liten_kube_pos_y = 500 - lengde_liten_kube
 
 # Fysikk variabler kuber  
 
-v2_start = -0.9/(ti_potens) # farten stor kube
+v2_start = -1/(ti_potens) # farten stor kube
 m2 = 1 * (hundre_potens)
 
 v1_start = 0   # farten liten kube
@@ -72,12 +73,17 @@ m1 = 1
 font = pygame.font.SysFont('arial', 32)
 font2 = pygame.font.SysFont('arial', 16)
 def tekst(x,y,varibler, tekst):
-    tekts_som_vises = font.render(f"{varibler} {tekst} ",True,white)
-    vindu.blit(tekts_som_vises,(x, y))
+    tekst_som_vises = font.render(f"{varibler} {tekst} ",True,white)
+    vindu.blit(tekst_som_vises,(x, y))
+
+def tekst2(x,y,tekst):
+    tekst_som_vises = font.render(tekst,True,white)
+    vindu.blit(tekst_som_vises,(x, y))
+
 
 def tekst_liten(x,y,varibler, tekst):
-    tekts_som_vises = font2.render(f"{varibler} {tekst} ",True,white)
-    vindu.blit(tekts_som_vises,(x, y))
+    tekst_som_vises = font2.render(f"{varibler} {tekst} ",True,white)
+    vindu.blit(tekst_som_vises,(x, y))
 
 # telling av kolisjon
 Antall_kolisjoner = 0  
@@ -92,6 +98,9 @@ while True:
             pygame.quit()
     vindu.fill(Bakgrunn)
     bakke(blue)
+
+    round_v1 = round(v1_start,int(antall_siffer+6))
+    round_v2 = round(v2_start,int(antall_siffer+6))
 
     # Grunnbevegelse 
     stor_kube_pos_x += v2_start
@@ -150,5 +159,12 @@ while True:
     #liten tekst til liten kube og potensen
     tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
     tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
+    
+    #Fart tekst
+    tekst2(200-64,500 + 32,"v1 =")
+    tekst(200,500 + 32,round_v1,"m/s")
+
+    tekst2(1000-64,500 + 32,"v2 =")
+    tekst(1000,500 + 32,round_v2,"m/s")
     
     pygame.display.update()
