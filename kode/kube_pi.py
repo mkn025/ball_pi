@@ -17,9 +17,7 @@ svart = (0,0,0)
 blue = (125, 177, 244)
 ball_farge  = (95, 137, 140)
 white = (255,255,255)
-FPS = 120000
 
-clock = pygame.time.Clock()
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
 
@@ -50,21 +48,17 @@ ti_potens = math.pow(10,antall_siffer-2)
 ti_potens2 = math.pow(10,antall_siffer)
 
 
-# bevegelses varibler
-
-    # stor kube
+# stor kube
 lengde_stor_kube = 200
 stor_kube_pos_x = 220
 stor_kube_pos_y = 500 - lengde_stor_kube
 
-    # liten kube 
+# liten kube 
 lengde_liten_kube = lengde_stor_kube/5
 liten_kube_pos_x = 70
 liten_kube_pos_y = 500 - lengde_liten_kube
 
-
 # Fysikk variabler kuber  
-
 v2_start = -1/(ti_potens) # farten stor kube
 m2 = 1 * (hundre_potens)
 
@@ -82,7 +76,6 @@ def tekst2(x,y,tekst):
     tekst_som_vises = font.render(tekst,True,white)
     vindu.blit(tekst_som_vises,(x, y))
 
-
 def tekst_liten(x,y,varibler, tekst):
     tekst_som_vises = font2.render(f"{varibler} {tekst} ",True,white)
     vindu.blit(tekst_som_vises,(x, y))
@@ -94,6 +87,7 @@ Antall_kolisjoner = 0
 kolisjon = False
 kolisjon_med_vegg = False
 
+#Programmet
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -113,13 +107,8 @@ while True:
             else:
                 Antall_kolisjoner += 1
                 kolisjon = True
-            # tekst som vises i bilde
 
             if kolisjon == True:
-                # endring av fart og retning
-
-            
-
                 # utregninger for elastisk kolisjon
                 sum_av_M = m2 + m1        
                 v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
@@ -129,41 +118,39 @@ while True:
                 v2_start = v2
                 lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                 kolisjon = False
-                # Endring av fart uten fysikk
-
+            # Endring av fart uten fysikk
             elif kolisjon_med_vegg == True:
                 Antall_kolisjoner += 1 
                 lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                 kolisjon_med_vegg = False
-
             # støt med veg
             if liten_kube_pos_x <= 0:
                 v1_start *= -1
                 kolisjon_med_vegg = True
 
-            # stopping av simulasjonen 
+    #stopping av simulasjonen 
     if stor_kube_pos_x > x_vin + lengde_stor_kube:
         print(Antall_kolisjoner)
         runtime()
         break
+    #Vindu 
     vindu.fill(Bakgrunn)
     bakke(blue)
-
-
-            # rendre ballene 
+    
+    # rendre Kuben 
     stor_firkant(stor_kube_pos_x,stor_kube_pos_y,lengde_stor_kube,lengde_stor_kube)
     liten_firkant(liten_kube_pos_x,liten_kube_pos_y,lengde_liten_kube,lengde_liten_kube)
 
-            # tekst som vises i bilde
+    #tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
     tekst(stor_kube_pos_x + lengde_stor_kube/4,stor_kube_pos_y + lengde_stor_kube/2-16 ,100,"Kg") #Tekst stor kube
             
-            #liten tekst til liten kube og potensen
+    #liten tekst til liten kube og potensen
     tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
     tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
             
-            #Fart tekst
+    #Fart tekst
     tekst2(200-64,500 + 32,"v1 =")
     tekst(200,500 + 32,round_v1,"m/s")
 
