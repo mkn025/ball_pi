@@ -50,7 +50,7 @@ ti_potens2 = math.pow(10,antall_siffer)
 
 # stor kube
 lengde_stor_kube = 200
-stor_kube_pos_x = 220
+stor_kube_pos_x = 800 #220
 stor_kube_pos_y = 500 - lengde_stor_kube
 
 # liten kube 
@@ -59,7 +59,7 @@ liten_kube_pos_x = 70
 liten_kube_pos_y = 500 - lengde_liten_kube
 
 # Fysikk variabler kuber  
-v2_start = -1/(ti_potens) # farten stor kube
+v2_start = -0.9/(ti_potens) # farten stor kube
 m2 = 1 * (hundre_potens)
 
 v1_start = 0   # farten liten kube
@@ -79,6 +79,31 @@ def tekst2(x,y,tekst):
 def tekst_liten(x,y,varibler, tekst):
     tekst_som_vises = font2.render(f"{varibler} {tekst} ",True,white)
     vindu.blit(tekst_som_vises,(x, y))
+
+def alle_tegning():
+    #Vindu 
+    vindu.fill(Bakgrunn)
+    bakke(blue)
+    
+    # rendre Kuben 
+    stor_firkant(stor_kube_pos_x,stor_kube_pos_y,lengde_stor_kube,lengde_stor_kube)
+    liten_firkant(liten_kube_pos_x,liten_kube_pos_y,lengde_liten_kube,lengde_liten_kube)
+
+    #tekst som vises i bilde
+    tekst(1000,100,Antall_kolisjoner, "Antall treff")
+    tekst(1000,150,round(π,7),"")
+    tekst(stor_kube_pos_x + lengde_stor_kube/4,stor_kube_pos_y + lengde_stor_kube/2-16 ,100,"Kg") #Tekst stor kube
+            
+    #liten tekst til liten kube og potensen
+    tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
+    tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
+            
+    #Fart tekst
+    tekst2(200-64,500 + 32,"v1 =")
+    tekst(200,500 + 32,round_v1,"m/s")
+
+    tekst2(1000-64,500 + 32,"v2 =")
+    tekst(1000,500 + 32,round_v2,"m/s")
 
 # telling av kolisjon
 Antall_kolisjoner = 0  
@@ -127,34 +152,10 @@ while True:
             if liten_kube_pos_x <= 0:
                 v1_start *= -1
                 kolisjon_med_vegg = True
-
     #stopping av simulasjonen 
     if stor_kube_pos_x > x_vin + lengde_stor_kube:
         print(Antall_kolisjoner)
         runtime()
         break
-    #Vindu 
-    vindu.fill(Bakgrunn)
-    bakke(blue)
-    
-    # rendre Kuben 
-    stor_firkant(stor_kube_pos_x,stor_kube_pos_y,lengde_stor_kube,lengde_stor_kube)
-    liten_firkant(liten_kube_pos_x,liten_kube_pos_y,lengde_liten_kube,lengde_liten_kube)
-
-    #tekst som vises i bilde
-    tekst(1000,100,Antall_kolisjoner, "Antall treff")
-    tekst(1000,150,round(π,7),"")
-    tekst(stor_kube_pos_x + lengde_stor_kube/4,stor_kube_pos_y + lengde_stor_kube/2-16 ,100,"Kg") #Tekst stor kube
-            
-    #liten tekst til liten kube og potensen
-    tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
-    tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
-            
-    #Fart tekst
-    tekst2(200-64,500 + 32,"v1 =")
-    tekst(200,500 + 32,round_v1,"m/s")
-
-    tekst2(1000-64,500 + 32,"v2 =")
-    tekst(1000,500 + 32,round_v2,"m/s")
-    
+    alle_tegning()
     pygame.display.update()
