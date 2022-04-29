@@ -37,17 +37,9 @@ def stor_firkant(x_kod, y_kod, x_lengde,y_lengde):
 def liten_firkant(x_kod, y_kod, x_lengde,y_lengde):
     pygame.draw.rect(vindu,ball_farge,(x_kod, y_kod,x_lengde,y_lengde))
     
-def stor_ball(x_kod, y_kod, radius):
-    pygame.draw.circle(vindu, ball_farge, (x_kod,y_kod), radius, width=0)
-
-def liten_ball(x_kod, y_kod, radius):
-    pygame.draw.circle(vindu, ball_farge, (x_kod,y_kod), radius, width=0)
-
-
 start_time = time.time()
 def runtime():
     print("Runtime: " + str(time.time() - start_time) + " sekunder")
-
 
 #lage lyd
 def lyd(lyd_fil):
@@ -58,42 +50,39 @@ def lyd(lyd_fil):
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
-
+ti_potens = math.pow(10,antall_siffer-2)
 
 
 # bevegelses varibler
 
-    # stor ball
-radius_stor_ball = 200
-stor_ball_pos_x = 550
-stor_ball_pos_y = 500 - radius_stor_ball
+    # stor kube
+lengde_stor_kube = 200
+stor_kube_pos_x = 550
+stor_kube_pos_y = 500 - lengde_stor_kube
+
+    # liten kube 
+lengde_liten_kube = 50
+liten_kube_pos_x = 150
+liten_kube_pos_y = 500 - lengde_liten_kube
 
 
-if antall_siffer == 1:
-    stor_ball_pos_x = 750
-elif antall_siffer == 2 or antall_siffer == 3:
-    stor_ball_pos_x = 350
+# Fysikk variabler kuber  
 
-
-
-    # liten ball 
-radius_liten_ball = 50
-liten_ball_pos_x = 350
-liten_ball_pos_y = 500 - radius_liten_ball
-
-
-# Fysikk variabler baller  
-
-v2_start = -500 / (10**antall_siffer-1) # farten stor ball
+v2_start = -5/(ti_potens) # farten stor kube
 m2 = 1 * (hundre_potens)
 
-v1_start = 0   # farten liten ball
+v1_start = 0   # farten liten kube
 m1 = 1
 
 # tekst
 font = pygame.font.SysFont('arial', 32)
+font2 = pygame.font.SysFont('arial', 16)
 def tekst(x,y,varibler, tekst):
     tekts_som_vises = font.render(f"{varibler} {tekst} ",True,white)
+    vindu.blit(tekts_som_vises,(x, y))
+
+def tekst_liten(x,y,varibler, tekst):
+    tekts_som_vises = font2.render(f"{varibler} {tekst} ",True,white)
     vindu.blit(tekts_som_vises,(x, y))
 
 # telling av kolisjon
@@ -111,11 +100,11 @@ while True:
     bakke(blue)
 
     # Grunnbevegelse 
-    stor_ball_pos_x += v2_start
-    liten_ball_pos_x += v1_start
+    stor_kube_pos_x += v2_start
+    liten_kube_pos_x += v1_start
 
     # støt med annen ball 
-    if (liten_ball_pos_x + radius_liten_ball) < (stor_ball_pos_x - radius_stor_ball) or (liten_ball_pos_x - radius_liten_ball) > (stor_ball_pos_x + radius_stor_ball): 
+    if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
         kolisjon = False
     else:
         Antall_kolisjoner += 1
@@ -146,26 +135,28 @@ while True:
         kolisjon_med_vegg = False
 
     # støt med veg
-    if liten_ball_pos_x < 0 + radius_liten_ball:
+    if liten_kube_pos_x <= 0:
         v1_start *= -1
         kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
-    if stor_ball_pos_x > x_vin + radius_stor_ball:
+    if stor_kube_pos_x > x_vin + lengde_stor_kube:
        print(Antall_kolisjoner)
        runtime()
        break
 
 
     # rendre ballene 
-    stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
-    liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
-    stor_firkant(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball,radius_stor_ball)
-    liten_firkant(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball,radius_liten_ball)
+    stor_firkant(stor_kube_pos_x,stor_kube_pos_y,lengde_stor_kube,lengde_stor_kube)
+    liten_firkant(liten_kube_pos_x,liten_kube_pos_y,lengde_liten_kube,lengde_liten_kube)
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
-    tekst(stor_ball_pos_x-radius_stor_ball,stor_ball_pos_y - radius_stor_ball - 35 ,m2,"kg")
+    tekst(stor_kube_pos_x + lengde_stor_kube/4,stor_kube_pos_y + lengde_stor_kube/2-16 ,100,"Kg") #Tekst stor kube
+    
+    #liten tekst til liten kube og potensen
+    tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
+    tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
     
     pygame.display.update()
