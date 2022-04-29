@@ -47,7 +47,7 @@ def lyd(lyd_fil):
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
-
+ti_potens2 = math.pow(10,antall_siffer)
 
 
 # bevegelses varibler
@@ -99,7 +99,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
     
-    for i in range(10000):
+    for i in range(int(ti_potens2)):
             round_v1 = round(v1_start,int(antall_siffer+6))
             round_v2 = round(v2_start,int(antall_siffer+6))
 
@@ -142,10 +142,10 @@ while True:
                 kolisjon_med_vegg = True
 
             # stopping av simulasjonen 
-            if stor_kube_pos_x > x_vin + lengde_stor_kube:
-                print(Antall_kolisjoner)
-                runtime()
-                break
+    if stor_kube_pos_x > x_vin + lengde_stor_kube:
+        print(Antall_kolisjoner)
+        runtime()
+        break
     vindu.fill(Bakgrunn)
     bakke(blue)
 
