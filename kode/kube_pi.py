@@ -8,12 +8,6 @@ from math import pi as π
 pygame.init()
 pygame.font.init()
 
-#X-kordinater -> (m1**1/2) * v1
-#Y-kordinater -> (m2**1/2) * v2
-#Stigninstall -> -(m1/m2)**1/2
-
-
-
 # Viktige varibler
 x_vin,y_vin = (1280),(720)
 
@@ -57,18 +51,18 @@ ti_potens = math.pow(10,antall_siffer-2)
 
     # stor kube
 lengde_stor_kube = 200
-stor_kube_pos_x = 550
+stor_kube_pos_x = 220
 stor_kube_pos_y = 500 - lengde_stor_kube
 
     # liten kube 
-lengde_liten_kube = 50
-liten_kube_pos_x = 150
+lengde_liten_kube = lengde_stor_kube/5
+liten_kube_pos_x = 70
 liten_kube_pos_y = 500 - lengde_liten_kube
 
 
 # Fysikk variabler kuber  
 
-v2_start = -5/(ti_potens) # farten stor kube
+v2_start = -0.9/(ti_potens) # farten stor kube
 m2 = 1 * (hundre_potens)
 
 v1_start = 0   # farten liten kube
@@ -123,14 +117,12 @@ while True:
 
         v1_start = v1 
         v2_start = v2
-
         lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon = False
         # Endring av fart uten fysikk
 
     elif kolisjon_med_vegg == True:
         Antall_kolisjoner += 1 
-        
         lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
         kolisjon_med_vegg = False
 
