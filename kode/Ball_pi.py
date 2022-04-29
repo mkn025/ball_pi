@@ -52,6 +52,7 @@ def lyd(lyd_fil):
 # desimaler av pi 
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
+ti_potens2 = math.pow(10,antall_siffer-1)
 
 # bevegelses varibler
 
@@ -76,7 +77,7 @@ liten_ball_pos_y = stor_ball_pos_y + radius_stor_ball - radius_liten_ball
 
 # Fysikk variabler baller  
 
-v2_start = -500 / (10**antall_siffer-1) # farten stor ball
+v2_start = -0.9 / (10**antall_siffer-1) # farten stor ball
 m2 = 1 * (hundre_potens)
 
 v1_start = 0   # farten liten ball
@@ -99,7 +100,8 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-    for i in range(10000):
+    
+    for i in range(int(ti_potens2)):
             # Grunnbevegelse 
             stor_ball_pos_x += v2_start
             liten_ball_pos_x += v1_start
@@ -149,7 +151,7 @@ while True:
 
     vindu.fill(Bakgrunn)
     bakke(blue)
-    
+
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
