@@ -155,7 +155,7 @@ while True:
                 kolisjon_med_vegg = True
     #stopping av simulasjonen 
     
-    if stor_kube_pos_x > x_vin + lengde_stor_kube:
+    if stor_kube_pos_x > x_vin:
         print(Antall_kolisjoner)
         runtime()
         break
