@@ -53,8 +53,6 @@ def lyd(lyd_fil):
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
 
-
-
 # bevegelses varibler
 
     # stor ball
@@ -101,48 +99,47 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-    vindu.fill(Bakgrunn)
-    bakke(blue)
+    for i in range(10000):
+            # Grunnbevegelse 
+            stor_ball_pos_x += v2_start
+            liten_ball_pos_x += v1_start
 
-    # Grunnbevegelse 
-    stor_ball_pos_x += v2_start
-    liten_ball_pos_x += v1_start
+            # støt med annen ball 
+            if (liten_ball_pos_x + radius_liten_ball) < (stor_ball_pos_x - radius_stor_ball) or (liten_ball_pos_x - radius_liten_ball) > (stor_ball_pos_x + radius_stor_ball): 
+                kolisjon = False
+            else:
+                Antall_kolisjoner += 1
+                kolisjon = True
+            # tekst som vises i bilde
 
-    # støt med annen ball 
-    if (liten_ball_pos_x + radius_liten_ball) < (stor_ball_pos_x - radius_stor_ball) or (liten_ball_pos_x - radius_liten_ball) > (stor_ball_pos_x + radius_stor_ball): 
-        kolisjon = False
-    else:
-        Antall_kolisjoner += 1
-        kolisjon = True
-    # tekst som vises i bilde
+            if kolisjon == True:
+                # endring av fart og retning
 
-    if kolisjon == True:
-        # endring av fart og retning
+            
 
-    
+                # utregninger for elastisk kolisjon
+                sum_av_M = m2 + m1        
+                v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
+                v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
 
-        # utregninger for elastisk kolisjon
-        sum_av_M = m2 + m1        
-        v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
-        v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
+                v1_start = v1 
+                v2_start = v2
 
-        v1_start = v1 
-        v2_start = v2
+                lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                kolisjon = False
+                # Endring av fart uten fysikk
 
-        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-        kolisjon = False
-        # Endring av fart uten fysikk
+            elif kolisjon_med_vegg == True:
+                Antall_kolisjoner += 1 
+                
+                lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                kolisjon_med_vegg = False
 
-    elif kolisjon_med_vegg == True:
-        Antall_kolisjoner += 1 
-        
-        lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-        kolisjon_med_vegg = False
+            # støt med veg
+            if liten_ball_pos_x < 0 + radius_liten_ball:
+                v1_start *= -1
+                kolisjon_med_vegg = True
 
-    # støt med veg
-    if liten_ball_pos_x < 0 + radius_liten_ball:
-        v1_start *= -1
-        kolisjon_med_vegg = True
 
     # stopping av simulasjonen 
     if stor_ball_pos_x > x_vin + radius_stor_ball:
@@ -150,7 +147,9 @@ while True:
        runtime()
        break
 
-
+    vindu.fill(Bakgrunn)
+    bakke(blue)
+    
     # rendre ballene 
     stor_ball(stor_ball_pos_x,stor_ball_pos_y,radius_stor_ball)
     liten_ball(liten_ball_pos_x,liten_ball_pos_y,radius_liten_ball)
