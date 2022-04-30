@@ -92,7 +92,7 @@ def alle_tegning():
     liten_firkant(liten_kube_pos_x,liten_kube_pos_y,lengde_liten_kube,lengde_liten_kube)
 
     #tekst som vises i bilde
-    tekst(1000,100,Antall_kolisjoner, "Antall treff")
+    tekst(1000,100,Antall_kollisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
     tekst(stor_kube_pos_x + lengde_stor_kube/4,stor_kube_pos_y + lengde_stor_kube/2-16 ,100,"Kg") #Tekst stor kube
             
@@ -107,12 +107,12 @@ def alle_tegning():
     tekst2(1000-64,500 + 32,"v2 =")
     tekst(1000,500 + 32,round_v2,"m/s")
 
-# telling av kolisjon
-Antall_kolisjoner = 0  
+# telling av kollisjon
+Antall_kollisjoner = 0  
 
-# kolidering
-kolisjon = False
-kolisjon_med_vegg = False
+# kollidering
+kollisjon = False
+kollisjon_med_vegg = False
 
 #Programmet
 while True:
@@ -128,15 +128,15 @@ while True:
             stor_kube_pos_x += v2_start
             liten_kube_pos_x += v1_start
 
-            # støt med annen ball 
+            # støt mellom kubene
             if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
-                kolisjon = False
+                kollisjon = False
             else:
-                Antall_kolisjoner += 1
-                kolisjon = True
+                Antall_kollisjoner += 1
+                kollisjon = True
 
-            if kolisjon == True:
-                # utregninger for elastisk kolisjon
+            if kollisjon == True:
+                # utregninger for elastisk kollisjon
                 sum_av_M = m2 + m1        
                 v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
                 v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
@@ -144,21 +144,20 @@ while True:
                 v1_start = v1 
                 v2_start = v2
                 lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-                kolisjon = False
+                kollisjon = False
             # Endring av fart uten fysikk
-            elif kolisjon_med_vegg == True:
-                Antall_kolisjoner += 1 
+            elif kollisjon_med_vegg == True:
+                Antall_kollisjoner += 1 
                 lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-                kolisjon_med_vegg = False
+                kollisjon_med_vegg = False
             # støt med veg
             if liten_kube_pos_x <= 0:
                 v1_start *= -1
-                kolisjon_med_vegg = True
-    #stopping av simulasjonen 
-    
+                kollisjon_med_vegg = True
+
     if stor_kube_pos_x > x_vin:
-        print("Antall kollisjoner =",Antall_kolisjoner)
-        print("π =",round(π,int(antall_siffer)))
+        print("Antall kollisjoner =",Antall_kollisjoner)
+        print("π =",round(π,7))
         runtime()
         print("\n")
         break
