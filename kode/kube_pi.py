@@ -34,7 +34,7 @@ def liten_firkant(x_kod, y_kod, x_lengde,y_lengde):
     
 start_time = time.time()
 def runtime():
-    print("Runtime: " + str(time.time() - start_time) + " sekunder")
+    print("Tid = " + str(time.time() - start_time) + " sekunder")
 
 #lage lyd
 def lyd(lyd_fil):
@@ -43,6 +43,7 @@ def lyd(lyd_fil):
     pygame.mixer.music.play()
     
 # desimaler av pi 
+print("\n")
 antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
@@ -156,8 +157,10 @@ while True:
     #stopping av simulasjonen 
     
     if stor_kube_pos_x > x_vin:
-        print(Antall_kolisjoner)
+        print("Antall kollisjoner =",Antall_kolisjoner)
+        print("π =",round(π,int(antall_siffer)))
         runtime()
+        print("\n")
         break
 
     alle_tegning()
