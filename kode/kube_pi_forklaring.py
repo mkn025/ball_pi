@@ -46,7 +46,7 @@ def lyd(lyd_fil):
     
 # desimaler av pi 
 print("\n")
-antall_siffer = float(input("Hvor mange siffer av π? : "))
+antall_siffer = float(input(""))
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
 ti_potens2 = math.pow(10,antall_siffer-1)
@@ -152,61 +152,80 @@ def sikrel_tegning():
 """
 * Programmet *
 """
+program_kører = False
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+    # takes input from user
+    key = pygame.key.get_pressed()
+    # Test for pil ned
+    if key[pygame.K_1]:
+        antall_siffer = 1
+        program_kører = True
+    if key[pygame.K_2]:
+        antall_siffer = 2
+        program_kører = True
+    if key[pygame.K_3]:
+        antall_siffer = 3
+        program_kører = True
+    if key[pygame.K_4]:
+        antall_siffer = 4
+        program_kører = True
     
-    for i in range(int(ti_potens2)):
-            round_v1 = round(v1_start,int(antall_siffer+6))
-            round_v2 = round(v2_start,int(antall_siffer+6))
 
-            # Grunnbevegelse 
-            stor_kube_pos_x += v2_start
-            liten_kube_pos_x += v1_start
+    if program_kører == True:
+        for i in range(int(ti_potens2)):
+                round_v1 = round(v1_start,int(antall_siffer+6))
+                round_v2 = round(v2_start,int(antall_siffer+6))
 
-            # støt mellom kubene
-            if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
-                kollisjon = False
-            else:
-                Antall_kollisjoner += 1
-                kollisjon = True
+                # Grunnbevegelse 
+                stor_kube_pos_x += v2_start
+                liten_kube_pos_x += v1_start
 
-            if kollisjon == True:
-                # utregninger for elastisk kollisjon
-                sum_av_M = m2 + m1        
-                v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
-                v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
+                # støt mellom kubene
+                if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
+                    kollisjon = False
+                else:
+                    Antall_kollisjoner += 1
+                    kollisjon = True
 
-                v1_start = v1 
-                v2_start = v2
+                if kollisjon == True:
+                    # utregninger for elastisk kollisjon
+                    sum_av_M = m2 + m1        
+                    v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
+                    v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
 
-                #Sirkel kordinater
-                x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2)))
-                y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(10*v1)))
+                    v1_start = v1 
+                    v2_start = v2
 
-                lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-                kollisjon = False
-            # Endring av fart uten fysikk
-            elif kollisjon_med_vegg == True:
-                Antall_kollisjoner += 1 
-                lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-                kollisjon_med_vegg = False
-            # støt med veg
-            if liten_kube_pos_x <= 0:
-                v1_start *= -1
-                y_kod_ball = g(x_kod_ball)
-                kollisjon_med_vegg = True
+                    #Sirkel kordinater
+                    x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2)))
+                    y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(10*v1)))
 
-    if stor_kube_pos_x > x_vin:
-        print("Antall kollisjoner =",Antall_kollisjoner)
-        print("π =",round(π,7))
-        runtime()
-        print("\n")
-        break
+                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    kollisjon = False
+                # Endring av fart uten fysikk
+                elif kollisjon_med_vegg == True:
+                    Antall_kollisjoner += 1 
+                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    kollisjon_med_vegg = False
+                # støt med veg
+                if liten_kube_pos_x <= 0:
+                    v1_start *= -1
+                    y_kod_ball = g(x_kod_ball)
+                    kollisjon_med_vegg = True
 
-    alle_tegning()
-    sikrel_tegning()
-    clock.tick(fps)
-    pygame.display.update() 
+        if stor_kube_pos_x > x_vin:
+            print("Antall kollisjoner =",Antall_kollisjoner)
+            print("π =",round(π,7))
+            runtime()
+            print(antall_siffer)
+            print("\n")
+            break
+
+        alle_tegning()
+        sikrel_tegning()
+        clock.tick(fps)
+        pygame.display.update() 
