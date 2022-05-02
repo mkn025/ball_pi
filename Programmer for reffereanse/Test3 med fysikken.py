@@ -3,6 +3,8 @@ import pygame, math, time
 pygame.init
 pygame.font.init()
 
+#Ganger fart med 10 fordi vi har gjort radiusen 10 ganger større
+
 #Farger
 black = (0,0,0)
 white = (255,255,255)
@@ -25,8 +27,8 @@ def tekst(x,y,varibler, tekst):
     vindu.blit(tekts_som_vises,(x, y))
 
 #Radius
-stor_sirkel_radius = 200
-liten_sirkel_radius = 10
+stor_sirkel_radius = 90 #(math.sqrt(m2)*(10*v2_start) 
+liten_sirkel_radius = 5
 
 #Ting til funskjonene
 y0 = float(y_vin/2)
@@ -40,31 +42,12 @@ def h(x):
 def g(x):
     return y0 - (math.sqrt(r**2-((x-x0)**2)))
 
-#Liten sirkel kordinater og fart
-start_dx = 1   #Må finne formel til disse to
-start_dy = 1
 
-dx = start_dx
-dy = start_dy
+x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2_start))) #math.sqrt(m2)*(10*v2_start)
+y_kod_ball = (y_vin/2+(math.sqrt(m1)*(10*v1_start))) #math.sqrt(m1)*(10*v1_start)
+kordinater_liten_ball = (x_kod_ball,y_kod_ball) 
 
-treff_dx = 0
-treff_dy = 1
-
-x_kod_ball = ((x_vin/2)-stor_sirkel_radius)
-y_kod_ball = (y_vin/2)
-kordinater_liten_ball = (x_kod_ball,y_kod_ball)
-
-#Ande ting 
-treff = 0
-ny_treff = 0
-
-#PROGRAMMET:
-while True:
-    # gjør det mulig å avslutte program
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
+def tegning():
     vindu.fill(bakgrunn)
 
     #Stor sirkel
@@ -75,26 +58,24 @@ while True:
     pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=2)
     pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=2)
 
-   #Bevegelse liten sirkel
-    y_kod_ball += dy
-    x_kod_ball += dx
 
-    #Når den treffer øverste halvdel av sirkel
-    if y_kod_ball <= g(x_kod_ball) and y_kod_ball < y_vin/2:
-        dx = start_dx
-        dy = start_dy
-        treff += 1
+#PROGRAMMET:
+while True:
+    # gjør det mulig å avslutte program
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
 
-    #Når den treffer nederste halvdel av sirkel
-    if y_kod_ball >= h(x_kod_ball) and y_kod_ball >= y_vin/2:
-        dx = treff_dx
-        dy = -treff_dy
-        treff += 1
-    
-    ny_treff = treff+1
-    tekst(1000,100,treff, "Antall treff")
-    
+    for i in range(int(ti_potens2)):
+            sum_av_M = m2 + m1        
+            v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
+            v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
+
+            v1_start = v1 
+            v2_start = v2
+
     #Hvor rask programm går
     clock.tick(FPS)
-
+    tegning()
     pygame.display.update()
