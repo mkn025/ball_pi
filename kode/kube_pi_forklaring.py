@@ -23,7 +23,7 @@ vindu = pygame.display.set_mode((x_vin,y_vin))
 
 # elementer:
 def bakke(farge):
-    pygame.draw.rect(vindu, farge, (0,500,x_vin,y_vin), width=0)
+    pygame.draw.rect(vindu, farge, (0,650,x_vin,y_vin), width=0)
 
 def stor_firkant(x_kod, y_kod, x_lengde,y_lengde):
     pygame.draw.rect(vindu,ball_farge,(x_kod, y_kod,x_lengde,y_lengde))
@@ -52,12 +52,12 @@ ti_potens2 = math.pow(10,antall_siffer-1)
 # stor kube
 lengde_stor_kube = 200
 stor_kube_pos_x = 220
-stor_kube_pos_y = 500 - lengde_stor_kube
+stor_kube_pos_y = 650 - lengde_stor_kube
 
 # liten kube 
 lengde_liten_kube = lengde_stor_kube/5
 liten_kube_pos_x = 70
-liten_kube_pos_y = 500 - lengde_liten_kube
+liten_kube_pos_y = 650 - lengde_liten_kube
 
 # Fysikk variabler kuber  
 v2_start = -0.9/(ti_potens) # farten stor kube
