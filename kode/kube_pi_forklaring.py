@@ -16,8 +16,11 @@ svart = (0,0,0)
 blue = (125, 177, 244)
 ball_farge  = (95, 137, 140)
 white = (255,255,255)
-fps = 10
+rød = (255,0,0)
+green = (0,255,0)
+fps = 2
 clock = pygame.time.Clock()
+
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
 
@@ -43,7 +46,7 @@ def lyd(lyd_fil):
     
 # desimaler av pi 
 print("\n")
-antall_siffer = float(input("Hvor mange siffer av π? : "))
+antall_siffer = 2 #float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
 ti_potens2 = math.pow(10,antall_siffer-1)
@@ -116,6 +119,34 @@ kollisjon_med_vegg = False
 ############
 # Forkalring #
 
+#Tegning av sirkel
+stor_sirkel_radius = 90 #(math.sqrt(m2)*(10*v2_start) 
+liten_sirkel_radius = 5
+
+#Ting til funskjonene
+y0 = float(y_vin/2)
+r = float(stor_sirkel_radius)
+x0 = float(x_vin/2)
+
+#Funskjonene til store sirkelen 
+def h(x):#Bunn 
+    return y0 + (math.sqrt(r**2-((x-x0)**2)))
+
+def g(x): #Topp
+    return y0 - (math.sqrt(r**2-((x-x0)**2)))
+
+x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2_start)))
+y_kod_ball = ((y_vin/2)+(math.sqrt(m1)*(10*v1_start))) 
+
+def sikrel_tegning():
+    #Stor sirkel
+    pygame.draw.circle(vindu, rød, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
+    
+    #Liten sirkel og linjer gjennom gjennom 
+    pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
+    pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=2)
+    pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=2)
+
 
 
 #Programmet
@@ -147,6 +178,11 @@ while True:
 
                 v1_start = v1 
                 v2_start = v2
+
+                #Sirkel kordinater
+                x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2)))
+                y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(10*v1)))
+
                 lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                 kollisjon = False
             # Endring av fart uten fysikk
@@ -157,6 +193,7 @@ while True:
             # støt med veg
             if liten_kube_pos_x <= 0:
                 v1_start *= -1
+                y_kod_ball = g(x_kod_ball)
                 kollisjon_med_vegg = True
 
     if stor_kube_pos_x > x_vin:
@@ -167,5 +204,7 @@ while True:
         break
 
     alle_tegning()
+    sikrel_tegning()
     clock.tick(fps)
-    pygame.display.update()
+    print(x_kod_ball,y_kod_ball,v2_start,v1_start)
+    pygame.display.update() 
