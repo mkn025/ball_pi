@@ -114,7 +114,8 @@ kollisjon = False
 kollisjon_med_vegg = False
 
 ############
-# forkalring
+# Forkalring #
+
 
 
 #Programmet
