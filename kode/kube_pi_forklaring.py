@@ -100,11 +100,11 @@ def alle_tegning():
     tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
             
     #Fart tekst
-    tekst2(200-64,500 + 32,"v1 =")
-    tekst(200,500 + 32,round_v1,"m/s")
+    tekst2(200-64,650 + 32,"v1 =")
+    tekst(200,650 + 32,round_v1,"m/s")
 
-    tekst2(1000-64,500 + 32,"v2 =")
-    tekst(1000,500 + 32,round_v2,"m/s")
+    tekst2(1000-64,650 + 32,"v2 =")
+    tekst(1000,650 + 32,round_v2,"m/s")
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
