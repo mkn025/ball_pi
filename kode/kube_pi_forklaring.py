@@ -18,7 +18,7 @@ ball_farge  = (95, 137, 140)
 white = (255,255,255)
 rød = (255,0,0)
 green = (0,255,0)
-fps = 2
+fps = 60
 clock = pygame.time.Clock()
 
 #vindu etc.
@@ -46,7 +46,7 @@ def lyd(lyd_fil):
     
 # desimaler av pi 
 print("\n")
-antall_siffer = 2 #float(input("Hvor mange siffer av π? : "))
+antall_siffer = float(input("Hvor mange siffer av π? : "))
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
 ti_potens2 = math.pow(10,antall_siffer-1)
@@ -116,9 +116,9 @@ Antall_kollisjoner = 0
 kollisjon = False
 kollisjon_med_vegg = False
 
-############
-# Forkalring #
-
+"""
+* Forkalring *
+"""
 #Tegning av sirkel
 stor_sirkel_radius = 90 #(math.sqrt(m2)*(10*v2_start) 
 liten_sirkel_radius = 5
@@ -149,7 +149,10 @@ def sikrel_tegning():
 
 
 
-#Programmet
+"""
+* Programmet *
+"""
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -206,5 +209,4 @@ while True:
     alle_tegning()
     sikrel_tegning()
     clock.tick(fps)
-    print(x_kod_ball,y_kod_ball,v2_start,v1_start)
     pygame.display.update() 
