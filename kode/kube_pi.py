@@ -17,7 +17,7 @@ svart = (0,0,0)
 blue = (125, 177, 244)
 ball_farge  = (95, 137, 140)
 white = (255,255,255)
-fps = 165
+fps = 10
 clock = pygame.time.Clock()
 #vindu etc.
 vindu = pygame.display.set_mode((x_vin,y_vin))
