@@ -1,5 +1,4 @@
 #Finne π ved kollisjon
-
 import pygame
 import time
 import math
@@ -113,6 +112,10 @@ Antall_kollisjoner = 0
 # kollidering
 kollisjon = False
 kollisjon_med_vegg = False
+
+############
+# forkalring
+
 
 #Programmet
 while True:
