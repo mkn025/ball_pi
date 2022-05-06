@@ -167,12 +167,15 @@ while True:
     if key[pygame.K_2]:
         antall_siffer = 2
         program_kører = True
+        print(antall_siffer)
     if key[pygame.K_3]:
         antall_siffer = 3
         program_kører = True
+        print(antall_siffer)
     if key[pygame.K_4]:
         antall_siffer = 4
         program_kører = True
+        print(antall_siffer)
     
 
     if program_kører == True:
