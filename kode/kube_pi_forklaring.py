@@ -146,10 +146,12 @@ def sikrel_tegning():
     
     #Liten sirkel og linjer gjennom gjennom 
     pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
-    pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=2)
-    pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=2)
+    #pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=2)
+    #pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=2)
+    
 
 
+L = []
 
 """
 * Programmet *
@@ -162,6 +164,9 @@ while True:
             pygame.quit()
     # Definere key
     key = pygame.key.get_pressed()
+    alle_tegning()
+    sikrel_tegning()
+    clock.tick(fps)
 
     # Test for tast
     if key[pygame.K_1]:
@@ -182,10 +187,6 @@ while True:
     
     
     if program_kjører == True:
-        #for z in range(1,int(antall_treff_skal_bli+1)):
-            
-                
-
         for i in range(int(ti_potens2)):
                 
                 # Grunnbevegelse 
@@ -212,7 +213,7 @@ while True:
                     x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2))) #Ganger fart med 10 siden vi har gjort radius 10 ganger større
                     y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(10*v1)))
                     kordinater_ball = (x_kod_ball,y_kod_ball)
-
+                    print(L)
                     lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                     kollisjon = False
                 # Endring av fart uten fysikk
@@ -227,14 +228,13 @@ while True:
                     kollisjon_med_vegg = True
 
         if stor_kube_pos_x > x_vin:
+            pygame.draw.lines(vindu,green,False,L,width=3)
             print("Antall kollisjoner =",Antall_kollisjoner)
             print("π =",round(π,7))
             runtime()
             print("Antall siffer =",antall_siffer)
+            print(L)
+            pygame.draw.lines(vindu,green,False,L,width=3)
             print("\n")
-            break
-
-        alle_tegning()
-        sikrel_tegning()
-        clock.tick(fps)
+            
         pygame.display.update() 
