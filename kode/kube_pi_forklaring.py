@@ -54,7 +54,7 @@ ti_potens2 = math.pow(10,antall_siffer-1)
 
 # stor kube
 lengde_stor_kube = 200
-stor_kube_pos_x = 220
+stor_kube_pos_x = 220 + 400
 stor_kube_pos_y = 650 - lengde_stor_kube
 
 # liten kube 
@@ -120,7 +120,8 @@ kollisjon_med_vegg = False
 * Forkalring *
 """
 #Tegning av sirkel
-stor_sirkel_radius = 90 #(math.sqrt(m2)*(10*v2_start) 
+v2_start_konstant = 0.9/ti_potens
+stor_sirkel_radius = math.sqrt(m2)*(v2_start_konstant)*10 #* med 10 Siden vi vil gjøre sikelen større
 liten_sirkel_radius = 5
 
 #Ting til funskjonene
@@ -152,33 +153,34 @@ def sikrel_tegning():
 """
 * Programmet *
 """
-program_kører = False
+program_kjører = False
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-    # takes input from user
+    # Definere key
     key = pygame.key.get_pressed()
-    # Test for pil ned
+
+    # Test for tast
     if key[pygame.K_1]:
         antall_siffer = 1
-        program_kører = True
+        program_kjører = True
     if key[pygame.K_2]:
         antall_siffer = 2
-        program_kører = True
+        program_kjører = True
         print(antall_siffer)
     if key[pygame.K_3]:
         antall_siffer = 3
-        program_kører = True
+        program_kjører = True
         print(antall_siffer)
     if key[pygame.K_4]:
         antall_siffer = 4
-        program_kører = True
+        program_kjører = True
         print(antall_siffer)
     
 
-    if program_kører == True:
+    if program_kjører == True:
         for i in range(int(ti_potens2)):
                 
                 # Grunnbevegelse 
@@ -202,7 +204,7 @@ while True:
                     v2_start = v2
 
                     #Sirkel kordinater
-                    x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2)))
+                    x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2))) #Ganger fart med 10 siden vi har gjort radius 10 ganger større
                     y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(10*v1)))
 
                     lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
@@ -214,8 +216,8 @@ while True:
                     kollisjon_med_vegg = False
                 # støt med veg
                 if liten_kube_pos_x <= 0:
-                    v1_start *= -1
-                    y_kod_ball = g(x_kod_ball)
+                    v1_start *= -1 #Farten går andre veien fordi veggen er "uendlig" masse
+                    y_kod_ball = g(x_kod_ball) #Ballen går rett opp på sirkel
                     kollisjon_med_vegg = True
 
         if stor_kube_pos_x > x_vin:
