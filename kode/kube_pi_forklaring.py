@@ -46,7 +46,7 @@ def lyd(lyd_fil):
     
 # desimaler av pi 
 print("\n")
-antall_siffer = float(input(""))
+antall_siffer = float(input("Skriv antall siffer: "))
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
 ti_potens2 = math.pow(10,antall_siffer-1)
@@ -104,10 +104,10 @@ def alle_tegning():
             
     #Fart tekst
     tekst2(200-64,650 + 32,"v1 =")
-    tekst(200,650 + 32,round_v1,"m/s")
+    tekst(200,650 + 32,round(v1_start,int(antall_siffer+6)),"m/s")
 
     tekst2(1000-64,650 + 32,"v2 =")
-    tekst(1000,650 + 32,round_v2,"m/s")
+    tekst(1000,650 + 32,round(v2_start,int(antall_siffer+6)),"m/s")
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
@@ -180,9 +180,7 @@ while True:
 
     if program_kører == True:
         for i in range(int(ti_potens2)):
-                round_v1 = round(v1_start,int(antall_siffer+6))
-                round_v2 = round(v2_start,int(antall_siffer+6))
-
+                
                 # Grunnbevegelse 
                 stor_kube_pos_x += v2_start
                 liten_kube_pos_x += v1_start
