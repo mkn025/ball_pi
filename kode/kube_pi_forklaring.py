@@ -111,6 +111,7 @@ def alle_tegning():
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
+antall_treff_skal_bli = round(π*ti_potens2)
 
 # kollidering
 kollisjon = False
@@ -179,8 +180,12 @@ while True:
         program_kjører = True
         print(antall_siffer)
     
-
+    
     if program_kjører == True:
+        #for z in range(1,int(antall_treff_skal_bli+1)):
+            
+                
+
         for i in range(int(ti_potens2)):
                 
                 # Grunnbevegelse 
@@ -206,6 +211,7 @@ while True:
                     #Sirkel kordinater
                     x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2))) #Ganger fart med 10 siden vi har gjort radius 10 ganger større
                     y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(10*v1)))
+                    kordinater_ball = (x_kod_ball,y_kod_ball)
 
                     lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                     kollisjon = False
@@ -224,7 +230,7 @@ while True:
             print("Antall kollisjoner =",Antall_kollisjoner)
             print("π =",round(π,7))
             runtime()
-            print(antall_siffer)
+            print("Antall siffer =",antall_siffer)
             print("\n")
             break
 
