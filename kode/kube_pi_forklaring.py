@@ -145,14 +145,14 @@ def g(x): #Topp
 x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(større*v2_start)))
 y_kod_ball = ((y_vin/2)+(math.sqrt(m1)*(større*v1_start))) 
 
-def sikrel_tegning():
+def sirkel_tegning():
     #Stor sirkel
     pygame.draw.circle(vindu, rød, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
     
     #Liten sirkel og linjer gjennom gjennom 
     pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
-    #pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=2)
-    #pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=2)
+    pygame.draw.line(vindu, white,(x_vin/2-stor_sirkel_radius,y_vin/2), (x_vin/2+stor_sirkel_radius,y_vin/2), width=1)
+    pygame.draw.line(vindu, white,(x_vin/2,y_vin/2-stor_sirkel_radius), (x_vin/2,y_vin/2+stor_sirkel_radius), width=1)
     
 
 
@@ -169,28 +169,38 @@ while True:
             pygame.quit()
     # Definere key
     key = pygame.key.get_pressed()
-    alle_tegning()
-    sikrel_tegning()
-    clock.tick(fps)
+    if key[pygame.K_ESCAPE]:
+        break 
 
     # Test for tast
-    if key[pygame.K_1]:
+    if key[pygame.K_1]:         #1
         antall_siffer = 1
         program_kjører = True
-    if key[pygame.K_2]:
+    if key[pygame.K_2]:         #2
         antall_siffer = 2
         program_kjører = True
         print(antall_siffer)
-    if key[pygame.K_3]:
+    if key[pygame.K_3]:         #3
         antall_siffer = 3
         program_kjører = True
         print(antall_siffer)
-    if key[pygame.K_4]:
+    if key[pygame.K_4]:         #4
         antall_siffer = 4
         program_kjører = True
         print(antall_siffer)
+    if key[pygame.K_5]:         #5
+        antall_siffer = 5
+        program_kjører = True
+        print(antall_siffer)
+    if key[pygame.K_6]:         #6
+        antall_siffer = 6
+        program_kjører = True
+        print(antall_siffer) 
     
-    
+    alle_tegning()
+    sirkel_tegning()
+    clock.tick(fps)
+
     if program_kjører == True:
         for i in range(int(ti_potens2)):
                 
@@ -204,6 +214,7 @@ while True:
                 kordinater_ball = (x_kod_ball,y_kod_ball)
                 L.append(kordinater_ball)
 
+                #lager linje i sirkel
                 if Antall_kollisjoner >= 1:
                     pygame.draw.lines(vindu,green,False,L,width=3)
                 
@@ -248,7 +259,6 @@ while True:
             print("π =",round(π,7))
             runtime()
             print("Antall siffer =",antall_siffer)
-            print("\n")
-            break
+            program_kjører = False
 
         pygame.display.update() 
