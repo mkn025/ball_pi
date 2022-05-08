@@ -18,7 +18,7 @@ ball_farge  = (95, 137, 140)
 white = (255,255,255)
 rød = (255,0,0)
 green = (0,255,0)
-fps = 60
+fps = 1
 clock = pygame.time.Clock()
 
 #vindu etc.
@@ -53,7 +53,7 @@ ti_potens2 = math.pow(10,antall_siffer-1)
 
 
 # stor kube
-lengde_stor_kube = 200
+lengde_stor_kube = 100
 stor_kube_pos_x = 220 + 400
 stor_kube_pos_y = 650 - lengde_stor_kube
 
@@ -96,18 +96,22 @@ def alle_tegning():
     #tekst som vises i bilde
     tekst(1000,100,Antall_kollisjoner, "Antall treff")
     tekst(1000,150,round(π,7),"")
-    tekst(stor_kube_pos_x + lengde_stor_kube/4,stor_kube_pos_y + lengde_stor_kube/2-16 ,100,"Kg") #Tekst stor kube
-            
-    #liten tekst til liten kube og potensen
-    tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
-    tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
-            
-    #Fart tekst
-    tekst2(200-64,650 + 32,"v1 =")
-    tekst(200,650 + 32,round(v1_start,int(antall_siffer+6)),"m/s")
 
-    tekst2(1000-64,650 + 32,"v2 =")
-    tekst(1000,650 + 32,round(v2_start,int(antall_siffer+6)),"m/s")
+    #Stor kube
+    tekst2(1000-64,y_vin - 64,"m2 =")
+    tekst(1000,y_vin - 64 ,100,"Kg")
+    tekst_liten(1000+42,y_vin - 68,round(antall_siffer),"")
+            
+    #Liten kube
+    tekst2(200-64,y_vin - 64,"m1 =")
+    tekst(200,y_vin - 64 ,m1,"Kg")
+    
+    #Fart tekst
+    tekst2(200-64,y_vin - 32,"v1 =")
+    tekst(200,y_vin - 32,round(v1_start,int(antall_siffer+6)),"m/s")
+
+    tekst2(1000-64,y_vin - 32,"v2 =")
+    tekst(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s")
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
@@ -122,7 +126,8 @@ kollisjon_med_vegg = False
 """
 #Tegning av sirkel
 v2_start_konstant = 0.9/ti_potens
-stor_sirkel_radius = math.sqrt(m2)*(v2_start_konstant)*10 #* med 10 Siden vi vil gjøre sikelen større
+større = 20 #Hvor mye større sirkel skal være
+stor_sirkel_radius = math.sqrt(m2)*(v2_start_konstant)*større
 liten_sirkel_radius = 5
 
 #Ting til funskjonene
@@ -137,8 +142,8 @@ def h(x):#Bunn
 def g(x): #Topp
     return y0 - (math.sqrt(r**2-((x-x0)**2)))
 
-x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2_start)))
-y_kod_ball = ((y_vin/2)+(math.sqrt(m1)*(10*v1_start))) 
+x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(større*v2_start)))
+y_kod_ball = ((y_vin/2)+(math.sqrt(m1)*(større*v1_start))) 
 
 def sikrel_tegning():
     #Stor sirkel
@@ -193,6 +198,15 @@ while True:
                 stor_kube_pos_x += v2_start
                 liten_kube_pos_x += v1_start
 
+                #Kordinater liten ball
+                x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(større*v2_start)))
+                y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(større*v1_start)))
+                kordinater_ball = (x_kod_ball,y_kod_ball)
+                L.append(kordinater_ball)
+
+                if Antall_kollisjoner >= 1:
+                    pygame.draw.lines(vindu,green,False,L,width=3)
+                
                 # støt mellom kubene
                 if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
                     kollisjon = False
@@ -205,36 +219,36 @@ while True:
                     sum_av_M = m2 + m1        
                     v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
                     v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
-
                     v1_start = v1 
                     v2_start = v2
 
-                    #Sirkel kordinater
-                    x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(10*v2))) #Ganger fart med 10 siden vi har gjort radius 10 ganger større
-                    y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(10*v1)))
-                    kordinater_ball = (x_kod_ball,y_kod_ball)
-                    print(L)
+                    #Sirkel kordinater liste
+                    L.append(kordinater_ball)
+
                     lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                     kollisjon = False
+
                 # Endring av fart uten fysikk
                 elif kollisjon_med_vegg == True:
                     Antall_kollisjoner += 1 
                     lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                     kollisjon_med_vegg = False
+
                 # støt med veg
                 if liten_kube_pos_x <= 0:
                     v1_start *= -1 #Farten går andre veien fordi veggen er "uendlig" masse
+
+                    #Siden liten ball skifter fortegn
                     y_kod_ball = g(x_kod_ball) #Ballen går rett opp på sirkel
+                    L.append(kordinater_ball)
                     kollisjon_med_vegg = True
 
         if stor_kube_pos_x > x_vin:
-            pygame.draw.lines(vindu,green,False,L,width=3)
             print("Antall kollisjoner =",Antall_kollisjoner)
             print("π =",round(π,7))
             runtime()
             print("Antall siffer =",antall_siffer)
-            print(L)
-            pygame.draw.lines(vindu,green,False,L,width=3)
             print("\n")
-            
+            break
+
         pygame.display.update() 
