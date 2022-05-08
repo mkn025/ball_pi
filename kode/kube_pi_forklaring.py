@@ -18,7 +18,7 @@ ball_farge  = (95, 137, 140)
 white = (255,255,255)
 rød = (255,0,0)
 green = (0,255,0)
-fps = 1
+fps = 60
 clock = pygame.time.Clock()
 
 #vindu etc.
