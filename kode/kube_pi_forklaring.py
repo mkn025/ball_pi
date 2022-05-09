@@ -194,7 +194,6 @@ L = []
 program_kjører = False
 
 # oppdaterer siffer 
-siffer_update = 0
 
 while True:
     for event in pygame.event.get():
@@ -210,12 +209,13 @@ while True:
     # Test for tast
     if key[pygame.K_1]:         
         program_kjører = True
-        siffer_update += 1
+        siffer_update = 1
         kube_start_på_nytt(siffer_update)
     elif key[pygame.K_2]:
         program_kjører = True
-        siffer_update -= 1
+        siffer_update = 2
         kube_start_på_nytt(siffer_update)
+        
 
     elif key[pygame.K_ESCAPE]:
         break 
