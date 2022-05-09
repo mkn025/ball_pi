@@ -82,8 +82,17 @@ def kube_start_på_nytt(siffer):
     v1_start = 0   
     m1 = 1
     L = []
+
+    print_ferdig()
     
 
+
+
+def print_ferdig():
+    print("Antall kollisjoner =",Antall_kollisjoner)
+    print("π =",round(π,7))
+    runtime()
+    print("Antall siffer =",antall_siffer)
 
 # Fysikk variabler kuber  
 v2_start = -0.9/(ti_potens) # farten stor kube
@@ -231,11 +240,12 @@ while True:
         program_kjører = True
         siffer_update = 6
         kube_start_på_nytt(siffer_update)
+        
     elif key[pygame.K_7]:
         program_kjører = True
         siffer_update = 7
         kube_start_på_nytt(siffer_update)
-
+        print_ferdig()
         
 
     elif key[pygame.K_ESCAPE]:
@@ -300,10 +310,7 @@ while True:
                     kollisjon_med_vegg = True
 
         if stor_kube_pos_x > x_vin:
-            print("Antall kollisjoner =",Antall_kollisjoner)
-            print("π =",round(π,7))
-            runtime()
-            print("Antall siffer =",antall_siffer)
+
             program_kjører = False
 
         pygame.display.update() 
