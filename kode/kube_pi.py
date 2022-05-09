@@ -41,7 +41,30 @@ def lyd(lyd_fil):
     pygame.mixer.init()
     pygame.mixer.music.load(lyd_fil)
     pygame.mixer.music.play()
+
+# start posisjoner til kube 
+def kube_start_på_nytt(siffer):
+    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2, antall_siffer,L, ti_potens,ti_potens2,hundre_potens
+    stor_kube_pos_x = 220 + 400
+    stor_kube_pos_y = 650 - lengde_stor_kube
+    liten_kube_pos_x = 70
+    liten_kube_pos_y = 650 - lengde_liten_kube
     
+    Antall_kollisjoner = 0
+    
+    antall_siffer = siffer
+    
+    hundre_potens = math.pow(100, antall_siffer-1)
+    ti_potens = math.pow(10,antall_siffer-2)
+    ti_potens2 = math.pow(10,antall_siffer-1)
+    
+    v2_start = -0.9/(ti_potens) 
+    m2 = 1 * (hundre_potens)
+    v1_start = 0   
+    m1 = 1
+    L = []
+    
+
 # desimaler av pi 
 print("\n")
 antall_siffer = float(input("Hvor mange siffer av π? : "))
@@ -119,7 +142,48 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-    
+        # Definere key
+    key = pygame.key.get_pressed()
+
+    if antall_siffer == 0:
+        v2_start = 0
+        program_kjører = True
+  
+    # Test for tast
+    if key[pygame.K_1]:         
+        program_kjører = True
+        siffer_update = 1
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_2]:
+        program_kjører = True
+        siffer_update = 2
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_3]:
+        program_kjører = True
+        siffer_update = 3
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_4]:
+        program_kjører = True
+        siffer_update = 4
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_5]:
+        program_kjører = True
+        siffer_update = 5
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_6]:
+        program_kjører = True
+        siffer_update = 6
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_7]:
+        program_kjører = True
+        siffer_update = 7
+        kube_start_på_nytt(siffer_update)
+
+        
+    elif key[pygame.K_ESCAPE]:
+        break 
+
+
     for i in range(int(ti_potens2)):
             round_v1 = round(v1_start,int(antall_siffer+6))
             round_v2 = round(v2_start,int(antall_siffer+6))
