@@ -150,9 +150,9 @@ def sirkel_tegning():
     pygame.draw.circle(vindu, rød, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
     
     #Liten sirkel og linjer gjennom gjennom 
-    pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
     pygame.draw.line(vindu, white,(x_vin/2-stor_sirkel_radius,y_vin/2), (x_vin/2+stor_sirkel_radius,y_vin/2), width=1)
     pygame.draw.line(vindu, white,(x_vin/2,y_vin/2-stor_sirkel_radius), (x_vin/2,y_vin/2+stor_sirkel_radius), width=1)
+    pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
     
 
 
@@ -216,7 +216,7 @@ while True:
 
                 #lager linje i sirkel
                 if Antall_kollisjoner >= 1:
-                    pygame.draw.lines(vindu,green,False,L,width=3)
+                    pygame.draw.lines(vindu,green,False,L,width=1)
                 
                 # støt mellom kubene
                 if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
