@@ -1,7 +1,5 @@
 #Finne π ved kollisjon
-import pygame
-import time
-import math
+import pygame,time,math
 from math import pi as π
 
 pygame.init()
