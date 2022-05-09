@@ -44,7 +44,7 @@ def lyd(lyd_fil):
     
 # desimaler av pi 
 print("\n")
-antall_siffer = float(input("Skriv antall siffer: "))
+antall_siffer = 0
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
 ti_potens2 = math.pow(10,antall_siffer-1)
@@ -215,6 +215,27 @@ while True:
         program_kjører = True
         siffer_update = 2
         kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_3]:
+        program_kjører = True
+        siffer_update = 3
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_4]:
+        program_kjører = True
+        siffer_update = 4
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_5]:
+        program_kjører = True
+        siffer_update = 5
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_6]:
+        program_kjører = True
+        siffer_update = 6
+        kube_start_på_nytt(siffer_update)
+    elif key[pygame.K_7]:
+        program_kjører = True
+        siffer_update = 7
+        kube_start_på_nytt(siffer_update)
+
         
 
     elif key[pygame.K_ESCAPE]:
