@@ -62,6 +62,20 @@ lengde_liten_kube = lengde_stor_kube/5
 liten_kube_pos_x = 70
 liten_kube_pos_y = 650 - lengde_liten_kube
 
+
+# start posisjoner til kube 
+def kube_start_på_nytt():
+    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2
+    stor_kube_pos_x = 220 + 400
+    stor_kube_pos_y = 650 - lengde_stor_kube
+    liten_kube_pos_x = 70
+    liten_kube_pos_y = 650 - lengde_liten_kube
+    Antall_kollisjoner = 0
+    v2_start = -0.9/(ti_potens) 
+    m2 = 1 * (hundre_potens)
+    v1_start = 0   
+    m1 = 1
+
 # Fysikk variabler kuber  
 v2_start = -0.9/(ti_potens) # farten stor kube
 m2 = 1 * (hundre_potens)
@@ -137,12 +151,14 @@ r = float(stor_sirkel_radius)
 x0 = float(x_vin/2)
 
 #Funskjonene til store sirkelen 
-def h(x):#Bunn 
+def h(x):# Bunn 
     return y0 + (math.sqrt(r**2-((x-x0)**2)))
 
-def g(x): #Topp
+def g(x): # Topp 
     return y0 - (math.sqrt(r**2-((x-x0)**2)))
 
+
+# kod til ball i sirkel 
 x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(større*v2_start)))
 y_kod_ball = ((y_vin/2)+(math.sqrt(m1)*(større*v1_start))) 
 
@@ -174,34 +190,19 @@ while True:
             pygame.quit()
     # Definere key
     key = pygame.key.get_pressed()
-    if key[pygame.K_ESCAPE]:
+
+
+  
+    # Test for tast
+    if key[pygame.K_1]:         
+        program_kjører = True
+    elif key[pygame.K_7]:
+        kube_start_på_nytt()
+
+    elif key[pygame.K_ESCAPE]:
         break 
 
-    # Test for tast
-    if key[pygame.K_1]:         #1
-        antall_siffer = 1
-        program_kjører = True
-    if key[pygame.K_2]:         #2
-        antall_siffer = 2
-        program_kjører = True
-        print(antall_siffer)
-    if key[pygame.K_3]:         #3
-        antall_siffer = 3
-        program_kjører = True
-        print(antall_siffer)
-    if key[pygame.K_4]:         #4
-        antall_siffer = 4
-        program_kjører = True
-        print(antall_siffer)
-    if key[pygame.K_5]:         #5
-        antall_siffer = 5
-        program_kjører = True
-        print(antall_siffer)
-    if key[pygame.K_6]:         #6
-        antall_siffer = 6
-        program_kjører = True
-        print(antall_siffer) 
-    
+
     alle_tegning()
     sirkel_tegning()
     clock.tick(fps)
