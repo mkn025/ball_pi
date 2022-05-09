@@ -101,17 +101,18 @@ def alle_tegning():
     tekst2(1000-64,y_vin - 64,"m2 =")
     tekst(1000,y_vin - 64 ,100,"Kg")
     tekst_liten(1000+42,y_vin - 68,round(antall_siffer),"")
-            
+    tekst2(1000-64,y_vin - 32,"v2 =")
+    tekst(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s")
+    
     #Liten kube
     tekst2(200-64,y_vin - 64,"m1 =")
     tekst(200,y_vin - 64 ,m1,"Kg")
-    
-    #Fart tekst
     tekst2(200-64,y_vin - 32,"v1 =")
     tekst(200,y_vin - 32,round(v1_start,int(antall_siffer+6)),"m/s")
+    
+    
 
-    tekst2(1000-64,y_vin - 32,"v2 =")
-    tekst(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s")
+  
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
