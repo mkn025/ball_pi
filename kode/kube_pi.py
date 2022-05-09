@@ -45,10 +45,10 @@ def lyd(lyd_fil):
 # start posisjoner til kube 
 def kube_start_på_nytt(siffer):
     global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2, antall_siffer,L, ti_potens,ti_potens2,hundre_potens
-    stor_kube_pos_x = 220 + 400
-    stor_kube_pos_y = 650 - lengde_stor_kube
+    stor_kube_pos_x = 220
+    stor_kube_pos_y = 500 - lengde_stor_kube
     liten_kube_pos_x = 70
-    liten_kube_pos_y = 650 - lengde_liten_kube
+    liten_kube_pos_y = 500 - lengde_liten_kube
     
     Antall_kollisjoner = 0
     
@@ -67,7 +67,7 @@ def kube_start_på_nytt(siffer):
 
 # desimaler av pi 
 print("\n")
-antall_siffer = float(input("Hvor mange siffer av π? : "))
+antall_siffer = 0
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
 ti_potens2 = math.pow(10,antall_siffer-1)
@@ -125,10 +125,10 @@ def alle_tegning():
             
     #Fart tekst
     tekst2(200-64,500 + 32,"v1 =")
-    tekst(200,500 + 32,round_v1,"m/s")
+    tekst(200,500 + 32,int(round(v1_start,9)),"m/s")
 
     tekst2(1000-64,500 + 32,"v2 =")
-    tekst(1000,500 + 32,round_v2,"m/s")
+    tekst(1000,500 + 32,int(round(v2_start,9)),"m/s")
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
@@ -136,6 +136,7 @@ Antall_kollisjoner = 0
 # kollidering
 kollisjon = False
 kollisjon_med_vegg = False
+program_kjører = False
 
 #Programmet
 while True:
@@ -183,41 +184,41 @@ while True:
     elif key[pygame.K_ESCAPE]:
         break 
 
+    if program_kjører == True:
+        for i in range(int(ti_potens2)):
+                round_v1 = round(v1_start,int(antall_siffer+6))
+                round_v2 = round(v2_start,int(antall_siffer+6))
 
-    for i in range(int(ti_potens2)):
-            round_v1 = round(v1_start,int(antall_siffer+6))
-            round_v2 = round(v2_start,int(antall_siffer+6))
+                # Grunnbevegelse 
+                stor_kube_pos_x += v2_start
+                liten_kube_pos_x += v1_start
 
-            # Grunnbevegelse 
-            stor_kube_pos_x += v2_start
-            liten_kube_pos_x += v1_start
+                # støt mellom kubene
+                if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
+                    kollisjon = False
+                else:
+                    Antall_kollisjoner += 1
+                    kollisjon = True
 
-            # støt mellom kubene
-            if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
-                kollisjon = False
-            else:
-                Antall_kollisjoner += 1
-                kollisjon = True
+                if kollisjon == True:
+                    # utregninger for elastisk kollisjon
+                    sum_av_M = m2 + m1        
+                    v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
+                    v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
 
-            if kollisjon == True:
-                # utregninger for elastisk kollisjon
-                sum_av_M = m2 + m1        
-                v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
-                v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
-
-                v1_start = v1 
-                v2_start = v2
-                lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-                kollisjon = False
-            # Endring av fart uten fysikk
-            elif kollisjon_med_vegg == True:
-                Antall_kollisjoner += 1 
-                lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
-                kollisjon_med_vegg = False
-            # støt med veg
-            if liten_kube_pos_x <= 0:
-                v1_start *= -1
-                kollisjon_med_vegg = True
+                    v1_start = v1 
+                    v2_start = v2
+                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    kollisjon = False
+                # Endring av fart uten fysikk
+                elif kollisjon_med_vegg == True:
+                    Antall_kollisjoner += 1 
+                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    kollisjon_med_vegg = False
+                # støt med veg
+                if liten_kube_pos_x <= 0:
+                    v1_start *= -1
+                    kollisjon_med_vegg = True
 
     if stor_kube_pos_x > x_vin:
         print("Antall kollisjoner =",Antall_kollisjoner)
