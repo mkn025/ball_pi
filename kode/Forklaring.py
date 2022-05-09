@@ -25,7 +25,7 @@ clock = pygame.time.Clock()
 vindu = pygame.display.set_mode((x_vin,y_vin))
 
 def kube_start_på_nytt(siffer):
-    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2, antall_siffer,L, ti_potens,ti_potens2,hundre_potens
+    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2, antall_siffer,L, ti_potens,ti_potens2,hundre_potens, tegning_linje
     stor_kube_pos_x = 220 + 400
     stor_kube_pos_y = 650 - lengde_stor_kube
     liten_kube_pos_x = 70
@@ -44,6 +44,9 @@ def kube_start_på_nytt(siffer):
     v1_start = 0   
     m1 = 1
     L = []
+    if siffer >= 4:
+        tegning_linje = False
+
     
 
 
@@ -149,7 +152,7 @@ L = []
 * Programmet *
 """
 program_kjører = False
-
+tegning_linje = True
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -215,7 +218,8 @@ while True:
 
                 #lager linje i sirkel
                 if Antall_kollisjoner >= 1:
-                    pygame.draw.lines(vindu,green,False,L,width=1)
+                    if tegning_linje == True:
+                        pygame.draw.lines(vindu,green,False,L,width=1)
                 
                 # støt mellom kubene
                 if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
@@ -259,5 +263,6 @@ while True:
             runtime()
             print("Antall siffer =",antall_siffer)
             program_kjører = False
+            pygame.draw.lines(vindu,green,False,L,width=1)
 
         pygame.display.update()

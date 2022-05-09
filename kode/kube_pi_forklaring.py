@@ -63,7 +63,9 @@ liten_kube_pos_y = 650 - lengde_liten_kube
 
 # start posisjoner til kube 
 def kube_start_på_nytt(siffer):
-    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2, antall_siffer,L, ti_potens,ti_potens2,hundre_potens
+    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner 
+    global v1_start, v2_start, m1, m2, antall_siffer,L, ti_potens,ti_potens2,hundre_potens, tegning_linje
+    
     stor_kube_pos_x = 220 + 400
     stor_kube_pos_y = 650 - lengde_stor_kube
     liten_kube_pos_x = 70
@@ -83,16 +85,20 @@ def kube_start_på_nytt(siffer):
     m1 = 1
     L = []
 
+    if siffer >= 4:
+        tegning_linje = False
     print_ferdig()
     
 
 
 
 def print_ferdig():
+    print("\n")
     print("Antall kollisjoner =",Antall_kollisjoner)
     print("π =",round(π,7))
     runtime()
     print("Antall siffer =",antall_siffer)
+    print("\n")
 
 # Fysikk variabler kuber  
 v2_start = -0.9/(ti_potens) # farten stor kube
@@ -119,6 +125,8 @@ def tekst_liten(x,y,varibler, tekst):
 def alle_tegning():
     #Vindu 
     vindu.fill(Bakgrunn)
+    pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=1)
+    pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=1)
     bakke(blue)
     
     # rendre Kuben 
@@ -185,8 +193,7 @@ def sirkel_tegning():
     pygame.draw.circle(vindu, rød, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
     
     #Liten sirkel og linjer gjennom gjennom 
-    pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=1)
-    pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=1)
+
     pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
     
     #Aksenavn
@@ -194,13 +201,13 @@ def sirkel_tegning():
     tekst2(x_vin/2+5,10,"v1 = math.sqrt(m1)*v1") #Y-akse          #Høyeste v1 altså lik v2 ^
     
 
-
 L = []
 
 """
 * Programmet *
 """
 program_kjører = False
+tegning_linje = True
 
 # oppdaterer siffer 
 
@@ -214,7 +221,7 @@ while True:
     if antall_siffer == 0:
         v2_start = 0
         program_kjører = True
-  
+
     # Test for tast
     if key[pygame.K_1]:         
         program_kjører = True
@@ -268,10 +275,11 @@ while True:
                 y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(større*v1_start)))
                 kordinater_ball = (x_kod_ball,y_kod_ball)
                 L.append(kordinater_ball)
-
+                
                 #lager linje i sirkel
                 if Antall_kollisjoner >= 1:
-                    pygame.draw.lines(vindu,green,False,L,width=1)
+                    if tegning_linje == True:
+                        pygame.draw.lines(vindu,green,False,L,width=1)
                 
                 # støt mellom kubene
                 if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
@@ -310,7 +318,8 @@ while True:
                     kollisjon_med_vegg = True
 
         if stor_kube_pos_x > x_vin:
-
             program_kjører = False
+            pygame.draw.lines(vindu,green,False,L,width=1)
+            
 
         pygame.display.update() 
