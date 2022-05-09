@@ -87,7 +87,10 @@ def kube_start_på_nytt(siffer):
 
     if siffer >= 4:
         tegning_linje = False
+    else:
+        tegning_linje = True
     print_ferdig()
+
     
 
 
@@ -150,9 +153,9 @@ def alle_tegning():
     tekst2(200-64,y_vin - 32,"v1 =")
     tekst(200,y_vin - 32,round(v1_start,int(antall_siffer+6)),"m/s")
     
-    
-
-  
+    #tekst som viser antall siffer
+    tekst2(x_vin/2-96, y_vin- 48,"Antall Siffer =")
+    tekst(x_vin/2 + 64, y_vin - 48,antall_siffer,"")
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
