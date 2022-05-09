@@ -150,9 +150,13 @@ def sirkel_tegning():
     pygame.draw.circle(vindu, rød, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
     
     #Liten sirkel og linjer gjennom gjennom 
-    pygame.draw.line(vindu, white,(x_vin/2-stor_sirkel_radius,y_vin/2), (x_vin/2+stor_sirkel_radius,y_vin/2), width=1)
-    pygame.draw.line(vindu, white,(x_vin/2,y_vin/2-stor_sirkel_radius), (x_vin/2,y_vin/2+stor_sirkel_radius), width=1)
+    pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=1)
+    pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=1)
     pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
+    
+    #Aksenavn
+    tekst2(x_vin-(192+96),y_vin/2-40,"v2 = math.sqrt(m2)*v2") #X-akse
+    tekst2(x_vin/2,10,"v1 = math.sqrt(m1)*v1") #Y-akse          #Høyeste v1 altså lik v2 ^
     
 
 
