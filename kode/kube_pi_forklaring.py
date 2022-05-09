@@ -63,7 +63,7 @@ liten_kube_pos_y = 650 - lengde_liten_kube
 
 # start posisjoner til kube 
 def kube_start_på_nytt(siffer):
-    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2, antall_siffer
+    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner, v1_start, v2_start, m1, m2, antall_siffer,L
     stor_kube_pos_x = 220 + 400
     stor_kube_pos_y = 650 - lengde_stor_kube
     liten_kube_pos_x = 70
@@ -74,6 +74,7 @@ def kube_start_på_nytt(siffer):
     v1_start = 0   
     m1 = 1
     antall_siffer = siffer
+    L = []
 
 # Fysikk variabler kuber  
 v2_start = -0.9/(ti_potens) # farten stor kube
