@@ -61,7 +61,7 @@ kollisjon_med_vegg = False
 
 #Tegning av sirkel
 v2_start_konstant = 0.9/ti_potens
-større = 20 #Hvor mye større sirkel skal være
+større = 40 #Hvor mye større sirkel skal være
 stor_sirkel_radius = math.sqrt(m2)*(v2_start_konstant)*større
 liten_sirkel_radius = 5
 
