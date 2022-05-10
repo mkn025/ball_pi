@@ -221,11 +221,7 @@ while True:
                     kollisjon_med_vegg = True
 
     if stor_kube_pos_x > x_vin:
-        print("Antall kollisjoner =",Antall_kollisjoner)
-        print("π =",round(π,7))
-        runtime()
-        print("\n")
-        break
+        program_kjører = False
 
     alle_tegning()
     clock.tick(fps)
