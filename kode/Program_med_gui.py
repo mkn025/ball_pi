@@ -50,9 +50,12 @@ while True:
     elif keys[pygame.K_1]:
         os.system("python3 kode/kube_pi_treg.py")
     elif keys[pygame.K_2]:
-       os.system("python3 kode/kube_pi.py")
+        os.system("python3 kode/kube_pi.py")
     elif keys[pygame.K_3]:
-       os.system("python3 kode/kube_pi_forklaring.py")
+        os.system("python3 kode/Forklaring.py")
+    elif keys[pygame.K_4]:
+        os.system("python3 kode/kube_pi_forklaring.py")
+    
         
     
 
