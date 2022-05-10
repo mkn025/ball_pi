@@ -26,7 +26,7 @@ def load_image(filename):
 
 
 
-start_bilde = load_image("Presentasjon2.jpg")
+start_bilde = load_image("Bilde_gui.jpg")
 
 
 
