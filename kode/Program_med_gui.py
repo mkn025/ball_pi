@@ -47,11 +47,11 @@ while True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         break
-    elif keys[pygame.K_t]:
-        os.system("python3 kode/kube_pi_tref.py")
-    elif keys[pygame.K_r]:
+    elif keys[pygame.K_1]:
+        os.system("python3 kode/kube_pi_treg.py")
+    elif keys[pygame.K_2]:
        os.system("python3 kode/kube_pi.py")
-    elif keys[pygame.K_f]:
+    elif keys[pygame.K_3]:
        os.system("python3 kode/kube_pi_forklaring.py")
         
     
