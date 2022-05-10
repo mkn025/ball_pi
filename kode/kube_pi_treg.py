@@ -100,13 +100,13 @@ def alle_tegning():
     tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
     tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
             
-    #Fart tekst
-    tekst2(200-64,500 + 32,"v1 =")
-    tekst(200,500 + 32,int(round(v1_start,7)),"m/s")
+ #Fart tekst
+    tekst2(200-64,y_vin - 32,"v1 =")
+    tekst(200,y_vin - 32,round(v1_start,int(antall_siffer+6)),"m/s")
 
-    tekst2(1000-64,500 + 32,"v2 =")
-    tekst(1000,500 + 32,int(round(v2_start,7)),"m/s")
-
+    tekst2(1000-64,y_vin - 32,"v2 =")
+    tekst(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s")
+    
 def kube_start_på_nytt(siffer):
     global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner
     global v1_start, v2_start, m1, m2, antall_siffer,Liste_kordinater, ti_potens,ti_potens2,hundre_potens, tegning_linje
