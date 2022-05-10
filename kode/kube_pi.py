@@ -143,7 +143,7 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-        # Definere key
+    # Definere key
     key = pygame.key.get_pressed()
 
     if antall_siffer == 0:
