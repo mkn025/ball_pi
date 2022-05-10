@@ -1,26 +1,11 @@
 import pygame
 import os
 
-
-pygame.init
-pygame.font.init()
-
-# farger
-black = (0,0,0)
-white = (255,255,255)
-green = (0,255,0)
-blue = (125, 177, 244)
-yellow = (255,255,0)
-bakgrunn = (30,30,30)
+pygame.init()
 
 # vindu og klokke
 x_vin, y_vin = 1280, 720
 vindu = pygame.display.set_mode((x_vin,y_vin))
-clock = pygame.time.Clock()
-
-
-
-
 
 # laster inn bilde
 start_bilde = pygame.image.load("Bilde_gui.jpg")
@@ -32,8 +17,6 @@ while True:
             pygame.quit()
             quit()
     
-
-
     # show image
     vindu.blit(start_bilde, (0,0))
 
