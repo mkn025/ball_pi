@@ -19,17 +19,11 @@ vindu = pygame.display.set_mode((x_vin,y_vin))
 clock = pygame.time.Clock()
 
 
-# loads image
-def load_image(filename):
-    image = pygame.image.load(filename)
-    return image
 
 
 
-start_bilde = load_image("Bilde_gui.jpg")
-
-
-
+# laster inn bilde
+start_bilde = pygame.image.load("Bilde_gui.jpg")
 
 # gjør det mulig å avslutte program
 while True:
