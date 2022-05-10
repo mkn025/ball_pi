@@ -27,6 +27,7 @@ def load_image(filename):
 
 start_bilde = load_image("Presentasjon1.jpg")
 
+def rask_simuering():
 
 
 # gjør det mulig å avslutte program
