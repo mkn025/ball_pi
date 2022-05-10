@@ -1,7 +1,6 @@
 import pygame
-import time
-import math
-from math import pi as π
+import os
+
 
 pygame.init
 pygame.font.init()
@@ -27,10 +26,9 @@ def load_image(filename):
 
 
 
-start_bilde = load_image("Presentasjon1.jpg")
+start_bilde = load_image("Presentasjon2.jpg")
 
-def rask_simuering():
-    pygame.time.delay(10)
+
 
 
 # gjør det mulig å avslutte program
@@ -49,26 +47,12 @@ while True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         break
-    elif keys[pygame.K_1]:
-        print("1")
-    elif keys[pygame.K_2]:
-        print("2")
-    elif keys[pygame.K_3]:
-        print("3")
-    elif keys[pygame.K_4]:
-        print("4")
-    elif keys[pygame.K_5]:
-        print("5")
-    elif keys[pygame.K_6]:
-        print("6")
-    elif keys[pygame.K_7]:
-        print("7")
     elif keys[pygame.K_t]:
-        print("t")
+        os.system("python3 kode/kube_pi_tref.py")
     elif keys[pygame.K_r]:
-        print("r")
+       os.system("python3 kode/kube_pi.py")
     elif keys[pygame.K_f]:
-        print("f")
+       os.system("python3 kode/kube_pi_forklaring.py")
         
     
 
