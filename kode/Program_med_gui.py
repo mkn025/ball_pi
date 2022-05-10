@@ -28,6 +28,7 @@ def load_image(filename):
 start_bilde = load_image("Presentasjon1.jpg")
 
 def rask_simuering():
+    pygame.time.delay(10)
 
 
 # gjør det mulig å avslutte program
@@ -68,6 +69,5 @@ while True:
         print("f")
         
     
-
 
     pygame.display.update()
