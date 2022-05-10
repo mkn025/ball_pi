@@ -1,6 +1,8 @@
+import pygame
+import time
+import math
+from math import pi as π
 
-
-import pygame 
 pygame.init
 pygame.font.init()
 
