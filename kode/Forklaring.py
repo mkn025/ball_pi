@@ -18,6 +18,8 @@ ball_farge  = (95, 137, 140)
 white = (255,255,255)
 rød = (255,0,0)
 green = (0,255,0)
+cyan = (0,252,194)
+lilla = (85,8,217)
 fps = 60
 clock = pygame.time.Clock()
 
@@ -134,12 +136,12 @@ def lyd(lyd_fil):
 def sirkel_tegning():
     vindu.fill(Bakgrunn)
     #Stor sirkel
-    pygame.draw.circle(vindu, rød, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
+    pygame.draw.circle(vindu, lilla, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
     
     #Liten sirkel og linjer gjennom gjennom 
     pygame.draw.line(vindu, white,(0,y_vin/2), (x_vin,y_vin/2), width=1)
     pygame.draw.line(vindu, white,(x_vin/2,0), (x_vin/2,y_vin), width=1)
-    pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
+    pygame.draw.circle(vindu, rød, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
     
     #Aksenavn
     tekst2(x_vin-(192+96),y_vin/2-40,"v2 = math.sqrt(m2)*v2") #X-akse
@@ -219,7 +221,7 @@ while True:
                 #lager linje i sirkel
                 if Antall_kollisjoner >= 1:
                     if tegning_linje == True:
-                        pygame.draw.lines(vindu,green,False,L,width=1)
+                        pygame.draw.lines(vindu,cyan,False,L,width=2)
                 
                 # støt mellom kubene
                 if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
@@ -263,6 +265,6 @@ while True:
             runtime()
             print("Antall siffer =",antall_siffer)
             program_kjører = False
-            pygame.draw.lines(vindu,green,False,L,width=1)
+            pygame.draw.lines(vindu,cyan,False,L,width=2)
 
         pygame.display.update()
