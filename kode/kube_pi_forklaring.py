@@ -16,6 +16,8 @@ ball_farge  = (95, 137, 140)
 white = (255,255,255)
 rød = (255,0,0)
 green = (0,255,0)
+cyan = (0,252,194)
+lilla = (85,8,217)
 fps = 60
 clock = pygame.time.Clock()
 
@@ -63,8 +65,9 @@ liten_kube_pos_y = 650 - lengde_liten_kube
 
 # start posisjoner til kube 
 def kube_start_på_nytt(siffer):
-    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner 
-    global v1_start, v2_start, m1, m2, antall_siffer,L, ti_potens,ti_potens2,hundre_potens, tegning_linje
+    global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner
+    global v1_start, v2_start, m1, m2, antall_siffer,Liste_kordinater, ti_potens,ti_potens2,hundre_potens, tegning_linje
+    global program_kjører
     
     stor_kube_pos_x = 220 + 400
     stor_kube_pos_y = 650 - lengde_stor_kube
@@ -83,25 +86,18 @@ def kube_start_på_nytt(siffer):
     m2 = 1 * (hundre_potens)
     v1_start = 0   
     m1 = 1
-    L = []
+    Liste_kordinater = []
 
     if siffer >= 4:
         tegning_linje = False
     else:
         tegning_linje = True
-    print_ferdig()
-
-    
 
 
+    if siffer == 0:
+        v2_start = 0
+    program_kjører = True
 
-def print_ferdig():
-    print("\n")
-    print("Antall kollisjoner =",Antall_kollisjoner)
-    print("π =",round(π,7))
-    runtime()
-    print("Antall siffer =",antall_siffer)
-    print("\n")
 
 # Fysikk variabler kuber  
 v2_start = -0.9/(ti_potens) # farten stor kube
@@ -161,6 +157,7 @@ def alle_tegning():
 Antall_kollisjoner = 0  
 antall_treff_skal_bli = round(π*ti_potens2)
 
+
 # kollidering
 kollisjon = False
 kollisjon_med_vegg = False
@@ -188,31 +185,29 @@ def g(x): # Topp
 
 
 # kod til ball i sirkel 
-x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(større*v2_start)))
-y_kod_ball = ((y_vin/2)+(math.sqrt(m1)*(større*v1_start))) 
+x_kod_ball = ((x_vin/2)-(math.sqrt(m2)*(større*v2_start_konstant)))
+y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(større*v1_start))) 
 
 def sirkel_tegning():
     #Stor sirkel
-    pygame.draw.circle(vindu, rød, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
+    pygame.draw.circle(vindu, lilla, (x_vin/2,y_vin/2), stor_sirkel_radius, width=2)
     
     #Liten sirkel og linjer gjennom gjennom 
 
-    pygame.draw.circle(vindu, green, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
+    pygame.draw.circle(vindu, rød, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
     
     #Aksenavn
     tekst2(x_vin-(192+96),y_vin/2-40,"v2 = math.sqrt(m2)*v2") #X-akse
     tekst2(x_vin/2+5,10,"v1 = math.sqrt(m1)*v1") #Y-akse          #Høyeste v1 altså lik v2 ^
     
 
-L = []
+Liste_kordinater = []
 
 """
 * Programmet *
 """
-program_kjører = False
+program_kjører = True
 tegning_linje = True
-
-# oppdaterer siffer 
 
 while True:
     for event in pygame.event.get():
@@ -221,51 +216,29 @@ while True:
     # Definere key
     key = pygame.key.get_pressed()
 
-    if antall_siffer == 0:
-        v2_start = 0
-        program_kjører = True
-
-    # Test for tast
-    if key[pygame.K_1]:         
-        program_kjører = True
-        siffer_update = 1
-        kube_start_på_nytt(siffer_update)
+    if key[pygame.K_0]:         
+        kube_start_på_nytt(0)
+    elif key[pygame.K_1]:         
+        kube_start_på_nytt(1)
     elif key[pygame.K_2]:
-        program_kjører = True
-        siffer_update = 2
-        kube_start_på_nytt(siffer_update)
+        kube_start_på_nytt(2)
     elif key[pygame.K_3]:
-        program_kjører = True
-        siffer_update = 3
-        kube_start_på_nytt(siffer_update)
+        kube_start_på_nytt(3)
     elif key[pygame.K_4]:
-        program_kjører = True
-        siffer_update = 4
-        kube_start_på_nytt(siffer_update)
+        kube_start_på_nytt(4)
     elif key[pygame.K_5]:
-        program_kjører = True
-        siffer_update = 5
-        kube_start_på_nytt(siffer_update)
+        kube_start_på_nytt(5)
     elif key[pygame.K_6]:
-        program_kjører = True
-        siffer_update = 6
-        kube_start_på_nytt(siffer_update)
-        
+        kube_start_på_nytt(6)     
     elif key[pygame.K_7]:
-        program_kjører = True
-        siffer_update = 7
-        kube_start_på_nytt(siffer_update)
-        print_ferdig()
-        
-
+        kube_start_på_nytt(7)
     elif key[pygame.K_ESCAPE]:
         break 
-
 
     alle_tegning()
     sirkel_tegning()
     clock.tick(fps)
-
+    
     if program_kjører == True:
         for i in range(int(ti_potens2)):
                 
@@ -277,12 +250,12 @@ while True:
                 x_kod_ball = ((x_vin/2)+(math.sqrt(m2)*(større*v2_start)))
                 y_kod_ball = ((y_vin/2)-(math.sqrt(m1)*(større*v1_start)))
                 kordinater_ball = (x_kod_ball,y_kod_ball)
-                L.append(kordinater_ball)
+                Liste_kordinater.append(kordinater_ball)
                 
                 #lager linje i sirkel
                 if Antall_kollisjoner >= 1:
                     if tegning_linje == True:
-                        pygame.draw.lines(vindu,green,False,L,width=1)
+                        pygame.draw.lines(vindu,cyan,False,Liste_kordinater,width=2)
                 
                 # støt mellom kubene
                 if (liten_kube_pos_x+lengde_liten_kube) < (stor_kube_pos_x) or (liten_kube_pos_x) > (stor_kube_pos_x+lengde_stor_kube): 
@@ -300,7 +273,7 @@ while True:
                     v2_start = v2
 
                     #Sirkel kordinater liste
-                    L.append(kordinater_ball)
+                    Liste_kordinater.append(kordinater_ball)
 
                     lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
                     kollisjon = False
@@ -317,12 +290,11 @@ while True:
 
                     #Siden liten ball skifter fortegn
                     y_kod_ball = g(x_kod_ball) #Ballen går rett opp på sirkel
-                    L.append(kordinater_ball)
+                    Liste_kordinater.append(kordinater_ball)
                     kollisjon_med_vegg = True
 
         if stor_kube_pos_x > x_vin:
             program_kjører = False
-            pygame.draw.lines(vindu,green,False,L,width=1)
-            
-
+            pygame.draw.lines(vindu,cyan,False,Liste_kordinater,width=2)
+        
         pygame.display.update() 
