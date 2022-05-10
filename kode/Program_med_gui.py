@@ -56,7 +56,4 @@ while True:
     elif keys[pygame.K_4]:
         os.system("python3 kode/kube_pi_forklaring.py")
     
-        
-    
-
     pygame.display.update()
