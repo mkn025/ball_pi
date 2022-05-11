@@ -154,13 +154,14 @@ program_kjører = False
 start_bilde = pygame.image.load("Bilde_gui.jpg")
 
 
-
+# for å toggle de av 
 treg_kjør = False
 kube_pi = False
 forkalring = False 
 kube_pi_forklaring = False
 
-test = False
+
+
 
 
 # gjør det mulig å avslutte program
@@ -169,7 +170,10 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+
+
     
+
     # show image
     if treg_kjør == False and kube_pi == False and forkalring == False and kube_pi_forklaring == False:
         vindu.blit(start_bilde, (0,0))
