@@ -25,12 +25,12 @@ while True:
     if keys[pygame.K_ESCAPE]:
         break
     elif keys[pygame.K_e]:
-        os.system("python3 kode/kube_pi_treg.py")
+        os.system("python3 kode/Underprogram/kube_pi_treg.py")
     elif keys[pygame.K_r]:
-        os.system("python3 kode/kube_pi.py")
+        os.system("python3 kode/Underprogram/kube_pi.py")
     elif keys[pygame.K_t]:
-        os.system("python3 kode/Forklaring.py")
+        os.system("python3 kode/Underprogram/Forklaring.py")
     elif keys[pygame.K_k]:
-        os.system("python3 kode/kube_pi_forklaring.py")
+        os.system("python3 kode/Underprogram/kube_pi_forklaring.py")
     
     pygame.display.update()
