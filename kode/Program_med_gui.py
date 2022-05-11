@@ -17,7 +17,7 @@ while True:
             pygame.quit()
             quit()
     
-    # show image
+    # viser bilde
     vindu.blit(start_bilde, (0,0))
 
     # takes keyborad input
