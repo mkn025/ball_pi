@@ -24,13 +24,13 @@ while True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         break
-    elif keys[pygame.K_1]:
+    elif keys[pygame.K_e]:
         os.system("python3 kode/kube_pi_treg.py")
-    elif keys[pygame.K_2]:
+    elif keys[pygame.K_r]:
         os.system("python3 kode/kube_pi.py")
-    elif keys[pygame.K_3]:
+    elif keys[pygame.K_t]:
         os.system("python3 kode/Forklaring.py")
-    elif keys[pygame.K_4]:
+    elif keys[pygame.K_k]:
         os.system("python3 kode/kube_pi_forklaring.py")
     
     pygame.display.update()
