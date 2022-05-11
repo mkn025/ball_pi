@@ -208,12 +208,12 @@ while True:
 
                     v1_start = v1 
                     v2_start = v2
-                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    lyd("klikkelyd.wav")
                     kollisjon = False
                 # Endring av fart uten fysikk
                 elif kollisjon_med_vegg == True:
                     Antall_kollisjoner += 1 
-                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    lyd("klikkelyd.wav")
                     kollisjon_med_vegg = False
                 # støt med veg
                 if liten_kube_pos_x <= 0:

@@ -275,13 +275,13 @@ while True:
                     #Sirkel kordinater liste
                     Liste_kordinater.append(kordinater_ball)
 
-                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    lyd("klikkelyd.wav")
                     kollisjon = False
 
                 # Endring av fart uten fysikk
                 elif kollisjon_med_vegg == True:
                     Antall_kollisjoner += 1 
-                    lyd("CodingChallenges_CC_139_Pi_Collisions_P5_clack.wav")
+                    lyd("klikkelyd.wav")
                     kollisjon_med_vegg = False
 
                 # støt med veg
