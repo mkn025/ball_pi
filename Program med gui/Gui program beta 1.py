@@ -1,4 +1,3 @@
-
 import math, time, pygame
 from math import pi as π
 from Funksjoner_for_gui import *
@@ -139,6 +138,7 @@ def kube_start_på_nytt(siffer):
         v2_start = 0
     program_kjører = True
 
+
 # telling av kollisjon
 Antall_kollisjoner = 0  
 
@@ -147,12 +147,8 @@ kollisjon = False
 kollisjon_med_vegg = False
 program_kjører = False
 
-
-
-
 # laster inn bilde
 start_bilde = pygame.image.load("Bilde_gui.jpg")
-
 
 # for å toggle de av 
 treg_kjør = False
@@ -160,11 +156,7 @@ kube_pi = False
 forkalring = False 
 kube_pi_forklaring = False
 
-
-
-
-
-# gjør det mulig å avslutte program
+# PROGRAMMET
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
