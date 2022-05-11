@@ -66,7 +66,7 @@ def kube_start_på_nytt(siffer):
     
 
 # desimaler av pi 
-print("\n")
+
 antall_siffer = 0
 hundre_potens = math.pow(100, antall_siffer-1)
 ti_potens = math.pow(10,antall_siffer-2)
@@ -151,7 +151,7 @@ while True:
         program_kjører = True
   
     # Test for tast
-    if key[pygame.K_1]:         
+    if key[pygame.K_1]:       
         program_kjører = True
         siffer_update = 1
         kube_start_på_nytt(siffer_update)
@@ -178,9 +178,7 @@ while True:
     elif key[pygame.K_7]:
         program_kjører = True
         siffer_update = 7
-        kube_start_på_nytt(siffer_update)
-
-        
+        kube_start_på_nytt(siffer_update)   
     elif key[pygame.K_ESCAPE]:
         break 
 
