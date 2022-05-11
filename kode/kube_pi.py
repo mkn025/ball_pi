@@ -206,6 +206,8 @@ while True:
                     v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
                     v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
 
+
+                    # oppdatere start verdiene slik at de kan brukes i formelen på nytt
                     v1_start = v1 
                     v2_start = v2
                     lyd("klikkelyd.wav")
