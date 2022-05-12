@@ -139,7 +139,7 @@ def alle_tegning():
     #Stor kube
     tekst2(1000-64,y_vin - 64,"m2 =")
     tekst(1000,y_vin - 64 ,100,"Kg")
-    tekst_liten(1000+42,y_vin - 68,round(antall_siffer),"")
+    tekst_liten(1000+42,y_vin - 68,round(antall_siffer-1),"")
     tekst2(1000-64,y_vin - 32,"v2 =")
     tekst(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s")
     

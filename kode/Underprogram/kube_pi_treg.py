@@ -98,7 +98,7 @@ def alle_tegning():
             
     #liten tekst til liten kube og potensen
     tekst_liten(liten_kube_pos_x + lengde_liten_kube/4,liten_kube_pos_y + lengde_liten_kube/2-8 ,m1,"Kg")
-    tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer),"")
+    tekst_liten(stor_kube_pos_x + lengde_stor_kube/2-7,stor_kube_pos_y + lengde_stor_kube/2-20 ,round(antall_siffer-1),"")
             
  #Fart tekst
     tekst2(200-64,y_vin - 200,"v1 =")
