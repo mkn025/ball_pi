@@ -9,3 +9,9 @@ men vi skjønner enda ikke hvorfor det blir pi, dette er noe vi håper du kan hj
 
 Rami sitt program er det med forklaringen(forklaringen.py), og martin sin er det med sleve kolisjonen. (kube_pi.pygame.init
 men vi jobbet sammmen på alt :)
+
+
+
+
+info_side:
+https://docs.google.com/document/d/14c2tovZh8GrYx5C6IWJwdhrGOT_EbNliq6BvZDF3yqo/edit?usp=sharing 
