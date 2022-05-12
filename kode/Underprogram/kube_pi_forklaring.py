@@ -112,7 +112,7 @@ def tekst_vanlig(x,y,tekst, font_størrelse):
     vindu.blit(tekst_som_vises,(x, y))
 
 
-def tekst_med_font(x,y,varibler, tekst, font_størrelse):
+def tekst(x,y,varibler, tekst, font_størrelse):
     tekst_som_vises = pygame.font.SysFont('arial', font_størrelse).render(f"{varibler} {tekst} ",True,white)
     vindu.blit(tekst_som_vises,(x, y))
 
@@ -130,25 +130,25 @@ def alle_tegning():
     liten_firkant(liten_kube_pos_x,liten_kube_pos_y,lengde_liten_kube,lengde_liten_kube)
 
     #tekst som vises i bilde
-    tekst_med_font(1000,100,Antall_kollisjoner, "Antall treff",32)
-    tekst_med_font(1000,150,round(π,7),"",32)
+    tekst(1000,100,Antall_kollisjoner, "Antall treff",32)
+    tekst(1000,150,round(π,7),"",32)
 
     #Stor kube
     tekst_vanlig(1000-64,y_vin - 64,"m2 =",32)
-    tekst_med_font(1000,y_vin - 64 ,100,"Kg",32)
-    tekst_med_font(1000+42,y_vin - 68,round(antall_siffer-1),"",16)
+    tekst(1000,y_vin - 64 ,100,"Kg",32)
+    tekst(1000+42,y_vin - 68,round(antall_siffer-1),"",16)
     tekst_vanlig(1000-64,y_vin - 32,"v2 =",32)
-    tekst_med_font(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s",32)
+    tekst(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s",32)
     
     #Liten kube
     tekst_vanlig(200-64,y_vin - 64,"m1 =",32)
-    tekst_med_font(200,y_vin - 64 ,m1,"Kg",32)
+    tekst(200,y_vin - 64 ,m1,"Kg",32)
     tekst_vanlig(200-64,y_vin - 32,"v1 =",32)
-    tekst_med_font(200,y_vin - 32,round(v1_start,int(antall_siffer+6)),"m/s",32)
+    tekst(200,y_vin - 32,round(v1_start,int(antall_siffer+6)),"m/s",32)
     
     #tekst som viser antall siffer
     tekst_vanlig(x_vin/2-96, y_vin- 48,"Antall Siffer =",32)
-    tekst_med_font(x_vin/2 + 64, y_vin - 48,antall_siffer,"",32)
+    tekst(x_vin/2 + 64, y_vin - 48,antall_siffer,"",32)
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
