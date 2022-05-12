@@ -22,9 +22,10 @@ lyd("wii.wav")
 
 
 def start_program_og_musikk_stopp(bane):
-    pygame.mixer.music.stop()
+    # pause the music
+    pygame.mixer.music.pause()
     os.system(f"python3 {bane}")
-
+    pygame.mixer.music.play()
 
 
 
@@ -52,4 +53,6 @@ while True:
         start_program_og_musikk_stopp("kode/Underprogram/Forklaring.py")
     elif keys[pygame.K_k]:
         start_program_og_musikk_stopp("kode/Underprogram/kube_pi_forklaring.py")
+    elif keys[pygame.K_]:
+        pygame.mixer.music.stop()
     pygame.display.update()
