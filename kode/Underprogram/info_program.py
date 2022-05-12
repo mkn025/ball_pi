@@ -15,6 +15,8 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
-    
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_ESCAPE]:
+        break
     vindu.blit(info_bilde, (0,0))
     pygame.display.update()

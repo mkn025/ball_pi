@@ -17,13 +17,16 @@ def lyd(lyd_fil):
     pygame.mixer.music.load(lyd_fil)
     pygame.mixer.music.play()
 
+musikk_spiller = True
 lyd("wii.wav")
 
 # starter programm og stopper musikk
 def start_program_og_musikk_stopp(bane):
     pygame.mixer.music.pause()
     os.system(f"python3 {bane}")
-    pygame.mixer.music.play()
+    if musikk_spiller == True:
+        pygame.mixer.music.unpause()
+    
 
 
 # gjør det mulig å avslutte program
@@ -53,6 +56,9 @@ while True:
     elif keys[pygame.K_i]:
         start_program_og_musikk_stopp("kode/Underprogram/info_program.py")
     elif keys[pygame.K_m]:
-        pygame.mixer.music.stop()
-
+        musikk_spiller = False
+        pygame.mixer.music.pause()
+    elif keys[pygame.K_n]:
+        musikk_spiller = True
+        pygame.mixer.music.unpause()
     pygame.display.update()
