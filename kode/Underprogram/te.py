@@ -103,12 +103,14 @@ m2 = 1 * (hundre_potens)
 v1_start = 0   # farten liten kube
 m1 = 1
 
-
+# tekst
+font = pygame.font.SysFont('arial', 32)
+font2 = pygame.font.SysFont('arial', 16)
 
 
 # funksjoner for tekst
-def tekst_vanlig(x,y,tekst, font_størrelse):
-    tekst_som_vises = pygame.font.SysFont('arial', font_størrelse).render(tekst,True,white)  # 32
+def tekst_vanlig(x,y,tekst):
+    tekst_som_vises = font.render(tekst,True,white)
     vindu.blit(tekst_som_vises,(x, y))
 
 
@@ -134,20 +136,20 @@ def alle_tegning():
     tekst_med_font(1000,150,round(π,7),"",32)
 
     #Stor kube
-    tekst_vanlig(1000-64,y_vin - 64,"m2 =",32)
+    tekst_vanlig(1000-64,y_vin - 64,"m2 =")
     tekst_med_font(1000,y_vin - 64 ,100,"Kg",32)
     tekst_med_font(1000+42,y_vin - 68,round(antall_siffer-1),"",16)
-    tekst_vanlig(1000-64,y_vin - 32,"v2 =",32)
+    tekst_vanlig(1000-64,y_vin - 32,"v2 =")
     tekst_med_font(1000,y_vin - 32,round(v2_start,int(antall_siffer+6)),"m/s",32)
     
     #Liten kube
-    tekst_vanlig(200-64,y_vin - 64,"m1 =",32)
+    tekst_vanlig(200-64,y_vin - 64,"m1 =")
     tekst_med_font(200,y_vin - 64 ,m1,"Kg",32)
-    tekst_vanlig(200-64,y_vin - 32,"v1 =",32)
+    tekst_vanlig(200-64,y_vin - 32,"v1 =")
     tekst_med_font(200,y_vin - 32,round(v1_start,int(antall_siffer+6)),"m/s",32)
     
     #tekst som viser antall siffer
-    tekst_vanlig(x_vin/2-96, y_vin- 48,"Antall Siffer =",32)
+    tekst_vanlig(x_vin/2-96, y_vin- 48,"Antall Siffer =")
     tekst_med_font(x_vin/2 + 64, y_vin - 48,antall_siffer,"",32)
 
 # telling av kollisjon
@@ -194,8 +196,8 @@ def sirkel_tegning():
     pygame.draw.circle(vindu, rød, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
     
     #Aksenavn
-    tekst_vanlig(x_vin-(192+96),y_vin/2-40,"v2 = math.sqrt(m2)*v2",32) #X-akse
-    tekst_vanlig(x_vin/2+5,10,"v1 = math.sqrt(m1)*v1",32) #Y-akse          #Høyeste v1 altså lik v2 ^
+    tekst_vanlig(x_vin-(192+96),y_vin/2-40,"v2 = math.sqrt(m2)*v2") #X-akse
+    tekst_vanlig(x_vin/2+5,10,"v1 = math.sqrt(m1)*v1") #Y-akse          #Høyeste v1 altså lik v2 ^
     
 # liste av kordinatene til punktene som linjen trekkes igjennom
 Liste_kordinater = []
