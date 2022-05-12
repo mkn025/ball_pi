@@ -1,8 +1,6 @@
 
-
 1.
-2.
-3.
-4.
-5.
+Hva gjør round_v1 og round_v2 og round_v3
+linje 188 i kube_pi.py
+
 

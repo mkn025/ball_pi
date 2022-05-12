@@ -66,8 +66,8 @@ liten_kube_pos_y = 650 - lengde_liten_kube
 # start posisjoner til kube 
 def kube_start_på_nytt(siffer):
     global stor_kube_pos_x, stor_kube_pos_y,liten_kube_pos_y, liten_kube_pos_x, Antall_kollisjoner
-    global v1_start, v2_start, m1, m2, antall_siffer,Liste_kordinater, ti_potens,ti_potens2,hundre_potens, tegning_linje
-    global program_kjører
+    global v1_start, v2_start, m1, m2, antall_siffer,Liste_kordinater, ti_potens,ti_potens2,hundre_potens
+    global program_kjører, tegning_linje
     
     stor_kube_pos_x = 220 + 400
     stor_kube_pos_y = 650 - lengde_stor_kube

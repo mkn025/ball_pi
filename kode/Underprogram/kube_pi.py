@@ -184,6 +184,7 @@ while True:
 
     if program_kjører == True:
         for i in range(int(ti_potens2)):
+            
                 round_v1 = round(v1_start,int(antall_siffer+6))
                 round_v2 = round(v2_start,int(antall_siffer+6))
 
