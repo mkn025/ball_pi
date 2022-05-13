@@ -1,5 +1,4 @@
-from re import T
-import pygame,os,math
+import pygame,os
 
 pygame.init()
 

@@ -1,5 +1,5 @@
 import pygame,time,math
-from math import pi as π
+
 
 """
 * Forkalring *
@@ -80,7 +80,7 @@ m1 = 1
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
-antall_treff_skal_bli = round(π*ti_potens2)
+antall_treff_skal_bli = round(math.pi*ti_potens2)
 
 # kollidering
 kollisjon = False
@@ -268,7 +268,7 @@ while True:
 
         if stor_kube_pos_x > x_vin:
             print("Antall kollisjoner =",Antall_kollisjoner)
-            print("π =",round(π,7))
+            print("π =",round(math.pi,7))
             runtime()
             print("Antall siffer =",antall_siffer)
             program_kjører = False

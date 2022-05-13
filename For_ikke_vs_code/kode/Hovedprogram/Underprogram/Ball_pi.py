@@ -3,7 +3,7 @@
 import pygame
 import time
 import math
-from math import pi as π
+
 
 pygame.init()
 pygame.font.init()
@@ -165,7 +165,7 @@ while True:
 
     # tekst som vises i bilde
     tekst(1000,100,Antall_kolisjoner, "Antall treff")
-    tekst(1000,150,round(π,7),"")
+    tekst(1000,150,round(math.pi,7),"")
     tekst(stor_ball_pos_x-radius_stor_ball,stor_ball_pos_y - radius_stor_ball - 35 ,m2,"kg")
     
     pygame.display.update()
