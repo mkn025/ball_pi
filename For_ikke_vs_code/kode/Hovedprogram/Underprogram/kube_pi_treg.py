@@ -203,7 +203,7 @@ while True:
             v1_start = v1 
             v2_start = v2
             try:
-                lyd("klikkelyd.wav")
+                lyd("Underprogram/klikkelyd.wav")
             except:
                 print("lyd_fil ikke funnet")
                 
@@ -213,7 +213,7 @@ while True:
             Antall_kollisjoner += 1 
             
             try:
-                lyd("klikkelyd.wav")
+                lyd("Underprogram/klikkelyd.wav")
             except:
             
                 print("lyd_fil ikke funnet")

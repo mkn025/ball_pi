@@ -276,7 +276,7 @@ while True:
                     Liste_kordinater.append(kordinater_ball)
 
                     try:
-                        lyd("klikkelyd.wav")
+                        lyd("Underprogram/klikkelyd.wav")
                     except:
                         print("lyd_fil ikke funnet")
                     
@@ -286,7 +286,7 @@ while True:
                 elif kollisjon_med_vegg == True:
                     Antall_kollisjoner += 1 
                     try:
-                        lyd("klikkelyd.wav")
+                        lyd("Underprogram/klikkelyd.wav")
                     except:
                         print("lyd_fil ikke funnet")
                         
