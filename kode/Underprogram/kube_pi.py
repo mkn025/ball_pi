@@ -3,7 +3,6 @@
 import pygame
 import time
 import math
-from math import pi as π
 
 pygame.init()
 pygame.font.init()
@@ -116,7 +115,7 @@ def alle_tegning():
 
     #tekst som vises i bilde
     tekst(1000,100,Antall_kollisjoner, "Antall treff")
-    tekst(1000,150,round(π,7),"")
+    tekst(1000,150,round(math.pi,7),"")
     tekst(stor_kube_pos_x + lengde_stor_kube/4,stor_kube_pos_y + lengde_stor_kube/2-16 ,100,"Kg") #Tekst stor kube
             
     #liten tekst til liten kube og potensen

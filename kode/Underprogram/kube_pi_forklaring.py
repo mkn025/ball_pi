@@ -1,6 +1,6 @@
 #Finne π ved kollisjon
 import pygame,time,math
-from math import pi as π
+
 
 pygame.init()
 pygame.font.init()
@@ -131,7 +131,7 @@ def alle_tegning():
 
     #tekst som vises i bilde
     tekst(1000,100,Antall_kollisjoner, "Antall treff",32)
-    tekst(1000,150,round(π,7),"",32)
+    tekst(1000,150,round(math.pi,7),"",32)
 
     #Stor kube
     tekst_vanlig(1000-64,y_vin - 64,"m2 =",32)
@@ -152,7 +152,7 @@ def alle_tegning():
 
 # telling av kollisjon
 Antall_kollisjoner = 0  
-antall_treff_skal_bli = round(π*ti_potens2)
+antall_treff_skal_bli = round(math.pi*ti_potens2)
 
 
 # kollidering
