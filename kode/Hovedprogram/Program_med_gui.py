@@ -48,7 +48,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
-    <
+    
     # viser bilde
     #fill vinduet med hvit
     if loadet_bilde == True:
