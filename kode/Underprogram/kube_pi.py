@@ -205,12 +205,19 @@ while True:
                     # oppdatere start verdiene slik at de kan brukes i formelen på nytt
                     v1_start = v1 
                     v2_start = v2
-                    lyd("klikkelyd.wav")
+                    try:
+                        lyd("klikkelyd.wav")
+                    except:
+                        print("lyd_fil ikke funnet")
+
                     kollisjon = False
                 # Endring av fart uten fysikk
                 elif kollisjon_med_vegg == True:
                     Antall_kollisjoner += 1 
-                    lyd("klikkelyd.wav")
+                    try:
+                        lyd("klikkelyd.wav")
+                    except:
+                        print("lyd_fil ikke funnet")
                     kollisjon_med_vegg = False
                 # støt med veg
                 if liten_kube_pos_x <= 0:

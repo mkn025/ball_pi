@@ -275,13 +275,21 @@ while True:
                     #Sirkel kordinater liste
                     Liste_kordinater.append(kordinater_ball)
 
-                    lyd("klikkelyd.wav")
+                    try:
+                        lyd("klikkelyd.wav")
+                    except:
+                        print("lyd_fil ikke funnet")
+                    
                     kollisjon = False
 
                 # Endring av fart uten fysikk
                 elif kollisjon_med_vegg == True:
                     Antall_kollisjoner += 1 
-                    lyd("klikkelyd.wav")
+                    try:
+                        lyd("klikkelyd.wav")
+                    except:
+                        print("lyd_fil ikke funnet")
+                        
                     kollisjon_med_vegg = False
 
                 # støt med veg
