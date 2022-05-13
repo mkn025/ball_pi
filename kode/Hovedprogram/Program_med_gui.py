@@ -1,3 +1,4 @@
+from re import T
 import pygame,os,math
 
 pygame.init()
@@ -8,14 +9,22 @@ x_vin, y_vin = 1280, 720
 vindu = pygame.display.set_mode((x_vin,y_vin))
 
 # laster inn bilde
-start_bilde = pygame.image.load("Bilde_gui.jpg")
 
+loadet_bilde = True
+try:
+    start_bilde = pygame.image.load("Bilde_gui.jpg")
+except:
+    loadet_bilde = False
 
 # plays a sound file
 def lyd(lyd_fil):
     pygame.mixer.init()
-    pygame.mixer.music.load(lyd_fil)
-    pygame.mixer.music.play()
+    try:
+        pygame.mixer.music.load(lyd_fil)
+        pygame.mixer.music.play()
+    except:
+        print("Finner ikke lydfil")    
+   
 
 musikk_spiller = True
 lyd("wii.wav")
@@ -27,7 +36,11 @@ def start_program_og_musikk_stopp(bane):
     if musikk_spiller == True:
         pygame.mixer.music.unpause()
     
-
+# tekst funksjon
+def tekst(tekst, x_kod, y_kod, farge, skrift_størrelse):
+    skrift = pygame.font.SysFont("Arial", skrift_størrelse)
+    tekst_objekt = skrift.render(tekst, True, farge)
+    vindu.blit(tekst_objekt, (x_kod, y_kod))
 
 # gjør det mulig å avslutte program
 while True:
@@ -35,11 +48,15 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
-    
+    <
     # viser bilde
     #fill vinduet med hvit
-    
-    vindu.blit(start_bilde, (0,0))
+    if loadet_bilde == True:
+        vindu.blit(start_bilde, (0,0))
+    elif loadet_bilde == False:
+        vindu.fill((255,255,255))
+        tekst("Finner ikke bilde", x_vin/2 - 150, y_vin/2 - 100, (0,0,0), 50)
+        tekst("trykk e r t eller k og se hva som skjer :)", x_vin/2 - 150, y_vin/2 + 150, (0,0,0), 50)
 
     # takes keyborad input
     keys = pygame.key.get_pressed()

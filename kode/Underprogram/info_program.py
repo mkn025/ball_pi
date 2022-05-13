@@ -17,7 +17,8 @@ try:
 except:
     funnet_bilde = False
     print("Finner ikke bilde")
-    
+
+
 
 # funtion for tekst 
 def tekst(tekst, x_kod, y_kod, farge, skrift_størrelse):
@@ -34,11 +35,13 @@ while True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         break
-    
+
     if funnet_bilde == True:
         vindu.blit(info_bilde, (0,0))
     elif funnet_bilde == False:
         vindu.fill((255,255,255))
         tekst("Finner ikke bilde", x_vin/2 - 150, y_vin/2 - 100, (0,0,0), 50)
+
+
 
     pygame.display.update()
