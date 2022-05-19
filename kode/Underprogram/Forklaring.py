@@ -273,5 +273,7 @@ while True:
             print("Antall siffer =",antall_siffer)
             program_kjører = False
             pygame.draw.lines(vindu,cyan,False,L,width=2)
-
+            
+        pygame.draw.circle(vindu, rød, (x_kod_ball,y_kod_ball), liten_sirkel_radius, width=0)
+        
         pygame.display.update()
