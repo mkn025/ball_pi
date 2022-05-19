@@ -196,9 +196,9 @@ while True:
 
                 if kollisjon == True:
                     # utregninger for elastisk kollisjon
-                    sum_av_M = m2 + m1        
-                    v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(sum_av_M))
-                    v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(sum_av_M))
+                           
+                    v2 = ((((m2-m1)*v2_start)+(2*m1*v1_start))/(m2 + m1))
+                    v1 = ((((m1-m2)*v1_start)+(2*m2*v2_start))/(m2 + m1))
 
 
                     # oppdatere start verdiene slik at de kan brukes i formelen på nytt
