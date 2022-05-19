@@ -41,6 +41,14 @@ def tekst(tekst, x_kod, y_kod, farge, skrift_størrelse):
     tekst_objekt = skrift.render(tekst, True, farge)
     vindu.blit(tekst_objekt, (x_kod, y_kod))
 
+# varibels for moving ball
+x_ball = 0
+y_ball = y_vin/2
+x_ball_vek = 0.001
+y_ball_vek = 0.001
+
+
+
 # gjør det mulig å avslutte program
 while True:
     for event in pygame.event.get():
@@ -56,6 +64,21 @@ while True:
         vindu.fill((255,255,255))
         tekst("Finner ikke bilde", x_vin/2 - 150, y_vin/2 - 100, (0,0,0), 50)
         tekst("trykk e r t eller k og se hva som skjer :)", x_vin/2 - 150, y_vin/2 + 150, (0,0,0), 50)
+        pygame.draw.circle(vindu, (0,0,0), (x_ball,y_ball), 50)
+
+
+        x_ball += x_ball_vek
+        y_ball += y_ball_vek
+        if x_ball > x_vin or x_ball < 0:
+            x_ball_vek = -x_ball_vek
+        if y_ball > y_vin or y_ball < 0:
+            y_ball_vek = -y_ball_vek
+        # prints x_ball and y_ball in game 
+        tekst(f"x_ball: {x_ball}", 0 + 150, 0 + 100, (0,0,0), 50)
+        tekst(f"y_ball: {y_ball}", 0 + 150, 0 + 50, (0,0,0), 50)
+        
+
+
 
     # takes keyborad input
     keys = pygame.key.get_pressed()
