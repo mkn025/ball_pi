@@ -1,6 +1,5 @@
 import pygame,time,math
 
-
 """
 * Forkalring *
 """
@@ -87,7 +86,7 @@ kollisjon = False
 kollisjon_med_vegg = False
 
 #Tegning av sirkel
-v2_start_konstant = 0.9/ti_potens
+v2_start_konstant = 0.9/ti_potens #Må være positiv sånn at raidus er positiv
 større = 40 #Hvor mye større sirkel skal være
 stor_sirkel_radius = math.sqrt(m2)*(v2_start_konstant)*større
 liten_sirkel_radius = 5
